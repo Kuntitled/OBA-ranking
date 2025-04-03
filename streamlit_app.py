@@ -5,5 +5,5 @@ from datetime import date
 today = str(date.today())
 
 st.title("Organização de Beyblade do Amazonas ")
-st.wrrite(today)
+st.write(today)
 st.title("RANKING ATUAL")
