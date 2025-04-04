@@ -17,4 +17,4 @@ st.write(today)
 st.title("RANKING ATUAL")
 
 for row in df.itertuples():
-    st.write(f"{row.BLADER} tem {row.PONTOS} e está em {row.COLOCAÇÃO}")
+    st.write(f"{row.blader} tem {row.points} e está em {row.placement}")
