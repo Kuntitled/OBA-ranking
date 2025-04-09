@@ -16,5 +16,5 @@ st.title("Organização de Beyblade do Amazonas")
 st.write(today)
 st.title("RANKING ATUAL")
 
-for row in df.itertuples():
+for row in df.itertuples()[:3]:
     st.write(f"{row.blader} tem {row.points} e está em {row.placement}")
