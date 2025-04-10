@@ -25,6 +25,7 @@ top3 = df.head(3)
 col2, col1, col3 = st.columns([1, 1, 1])  # Left, center, right
 
 with col2:
+    st.image(top3.iloc[1]['avatar'], width=100)
     st.markdown(
         f"<div style='text-align: center;'>"
         f"<h3>🥈 {top3.iloc[1]['blader']}</h3>"
@@ -34,6 +35,7 @@ with col2:
     )
 
 with col1:
+    st.image(top3.iloc[0]['avatar'], width=100)
     st.markdown(
         f"<div style='text-align: center;'>"
         f"<h1>🥇 {top3.iloc[0]['blader']}</h1>"
@@ -43,6 +45,7 @@ with col1:
     )
 
 with col3:
+    st.image(top3.iloc[2]['avatar'], width=100)
     st.markdown(
         f"<div style='text-align: center;'>"
         f"<h5>🥉 {top3.iloc[2]['blader']}</h5>"
