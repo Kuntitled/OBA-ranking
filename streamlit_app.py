@@ -12,10 +12,8 @@ top3 = df.head(3)
 
 today = str(date.today())
 
-# PAGE CONFIG
-# st.set_page_config(page_title="Ranking - OBA", 
-#                    page_icon=":shark:"
-#                    )
+#PAGE CONFIG
+st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
 
 # TITLE
 st.title("Organização de Beyblade do Amazonas")
