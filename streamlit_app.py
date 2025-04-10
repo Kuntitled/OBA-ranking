@@ -8,9 +8,9 @@ df = gSheetsConnection.read(worksheet="Ranking Oficial")
 df = df.dropna(how="all")
 df = df.sort_values("points", ascending=False).reset_index(drop=True)
 
-st.set_page_config(page_title="Ranking - OBA", 
-                   page_icon=":shark:"
-                   )
+# st.set_page_config(page_title="Ranking - OBA", 
+#                    page_icon=":shark:"
+#                    )
 
 today = str(date.today())
 
