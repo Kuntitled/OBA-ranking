@@ -4,7 +4,7 @@ import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
-df = gSheetsConnection.read()
+df = gSheetsConnection.read(worksheet="Ranking Oficial")
 df = df.dropna(how="all")
 
 #st.dataframe(df)
