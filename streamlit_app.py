@@ -37,4 +37,4 @@ st.table(first_three_df)
 #for row in df.intertuples():
 #    mainTable.append(row)
 
-st.write(mainTable)
+#st.write(mainTable)
