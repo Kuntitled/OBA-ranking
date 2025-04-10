@@ -50,3 +50,16 @@ with col3:
         f"</div>",
         unsafe_allow_html=True
     )
+
+# Spacer / divider
+st.markdown("---")
+st.subheader("🏅 Other Rankings")
+
+# Get the rest of the players (starting from index 3)
+rest = df.iloc[3:].reset_index(drop=True)
+
+# Option 1: Pretty list with markdown
+for i, row in rest.iterrows():
+    st.markdown(
+        f"**#{i + 4}** — {row['blader']} ({row['points']} pts)"
+    )
