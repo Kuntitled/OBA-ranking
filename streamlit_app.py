@@ -28,7 +28,7 @@ with col2:
     st.markdown(
         f"<div style='text-align: center;'>"
         f"<h3>🥈 {top3.iloc[1]['blader']}</h3>"
-        f"<p>{top3.iloc[1]['points']} pts</p>"
+        f"<p>{top3.iloc[1]['points']} pontos</p>"
         f"</div>",
         unsafe_allow_html=True
     )
@@ -37,7 +37,7 @@ with col1:
     st.markdown(
         f"<div style='text-align: center;'>"
         f"<h1>🥇 {top3.iloc[0]['blader']}</h1>"
-        f"<p style='font-size:20px;'>{top3.iloc[0]['points']} pts</p>"
+        f"<p style='font-size:20px;'>{top3.iloc[0]['points']} pontos</p>"
         f"</div>",
         unsafe_allow_html=True
     )
@@ -46,14 +46,14 @@ with col3:
     st.markdown(
         f"<div style='text-align: center;'>"
         f"<h5>🥉 {top3.iloc[2]['blader']}</h5>"
-        f"<p>{top3.iloc[2]['points']} pts</p>"
+        f"<p>{top3.iloc[2]['points']} pontos</p>"
         f"</div>",
         unsafe_allow_html=True
     )
 
 # Spacer / divider
 st.markdown("---")
-st.subheader("🏅 Other Rankings")
+st.subheader("🏅 Demais Colocados")
 
 # Get the rest of the players (starting from index 3)
 rest = df.iloc[3:].reset_index(drop=True)
@@ -61,5 +61,5 @@ rest = df.iloc[3:].reset_index(drop=True)
 # Option 1: Pretty list with markdown
 for i, row in rest.iterrows():
     st.markdown(
-        f"**#{i + 4}** — {row['blader']} ({row['points']} pts)"
+        f"**#{i + 4}** — {row['blader']} ({row['points']} pontos)"
     )
