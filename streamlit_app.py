@@ -3,6 +3,9 @@ from datetime import date
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
+#PAGE CONFIG
+st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
+
 #GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
 df = gSheetsConnection.read(worksheet="Ranking Oficial")
@@ -11,9 +14,6 @@ df = df.sort_values("points", ascending=False).reset_index(drop=True)
 top3 = df.head(3)
 
 today = str(date.today())
-
-#PAGE CONFIG
-st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
 
 # TITLE
 st.title("Organização de Beyblade do Amazonas")
