@@ -3,10 +3,10 @@ from datetime import date
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
-#PAGE CONFIG
+# PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
 
-#GSHEETS CONFIG
+# GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
 df = gSheetsConnection.read(worksheet="Ranking Oficial")
 df = df.dropna(how="all")
@@ -20,7 +20,7 @@ st.title("Organização de Beyblade do Amazonas")
 st.write("Última atualização em: " + today)
 st.title("RANKING ATUAL")
 
-# RANKING
+# RANKING - TOP 3
 sizes = ["32px", "24px", "18px"]
 medals = ["🥇", "🥈", "🥉"]
 
@@ -30,25 +30,24 @@ for i in range(3):
     row = top3.iloc[i]
     name = row["blader"]
     points = row["points"]
-    image_url = row["avatar"]
+    image_url = row["avatar"]  # Make sure this column exists in your sheet
 
-    col_img, col_text = st.columns([1, 4])
-
-    with col_img:
-        st.image(image_url, width=60)
-
-    with col_text:
-        st.markdown(
-            f"<div style='font-size:{sizes[i]}; font-weight:bold;'>"
-            f"{medals[i]} {name}</div>"
-            f"<div style='font-size:14px; color:gray;'>{points} pontos</div>",
-            unsafe_allow_html=True
-        )
+    st.markdown(
+        f"""
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <img src="{image_url}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
+            <div>
+                <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} {name}</div>
+                <div style="font-size: 14px; color: gray;">{points} pontos</div>
+            </div>
+        </div>
+        <hr>
+        """,
+        unsafe_allow_html=True
+    )
 
 # OTHER PLACEMENTS
-st.markdown("---")
 st.subheader("🏅 Demais Colocados")
-
 rest = df.iloc[3:].reset_index(drop=True)
 
 for i, row in rest.iterrows():
