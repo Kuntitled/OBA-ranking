@@ -54,3 +54,18 @@ for i, row in rest.iterrows():
     st.markdown(
         f"**#{i + 4}** — {row['blader']} ({row['points']} pontos)"
     )
+
+# DIVIDER
+st.markdown("---")
+
+# SOCIAL MEDIA
+st.markdown(
+    """
+    <div style="text-align: center; font-size: 16px;">
+        📱 Siga a <strong>OBA</strong> nas redes sociais:<br>
+        <a href="https://www.instagram.com/beybladeamazonas?igsh=MWkwbTZ5OW56am80Mw==" target="_blank">Instagram</a> |
+        <a href="https://www.tiktok.com/@beybladexbatalha?_t=ZM-8vWyk4NNFPr&_r=1" target="_blank">TikTok</a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
