@@ -95,23 +95,23 @@ with tabFour:
         avatar_url = row["avatar"]
 
         # Create blank background
-        tag_img = Image.new("RGB", (400, 200), color="#004488")  # blue background
+        tag_img = Image.new("RGB", (300, 500), color="#004488")  # blue background
         draw = ImageDraw.Draw(tag_img)
 
         # Load avatar
         response = requests.get(avatar_url)
-        avatar = Image.open(io.BytesIO(response.content)).resize((80, 80)).convert("RGB")
-        avatar_circle = Image.new("L", (80, 80), 0)
+        avatar = Image.open(io.BytesIO(response.content)).resize((200, 200)).convert("RGB")
+        avatar_circle = Image.new("L", (200, 200), 0)
         draw_circle = ImageDraw.Draw(avatar_circle)
-        draw_circle.ellipse((0, 0, 80, 80), fill=255)
+        draw_circle.ellipse((0, 0, 200, 200), fill=255)
         avatar.putalpha(avatar_circle)
 
-        tag_img.paste(avatar, (20, 60), avatar)
+        tag_img.paste(avatar, (50, 30), avatar)
 
         # Draw name and points
         font = ImageFont.load_default()
-        draw.text((120, 70), f"{name}", font=font, fill="white")
-        draw.text((120, 100), f"{points} pontos", font=font, fill="white")
+        draw.text((30, 260), f"{name}", font=font, fill="white")
+        draw.text((30, 290), f"{points} pontos", font=font, fill="white")
 
         # Show image in Streamlit
         st.image(tag_img, caption=f"Tag de {name}")
