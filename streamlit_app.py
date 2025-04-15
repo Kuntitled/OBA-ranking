@@ -5,7 +5,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
-tabOne, tabTwo = st.tabs(["🏆 Top 10", "📋 Ranking Completo"])
+tabOne, tabTwo, tabThree = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "✅ Regras"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -73,3 +73,7 @@ with tabOne:
 
 with tabTwo:
     st.dataframe(df[["blader_id", "blader", "points"]], use_container_width=True)
+
+with tabThree:
+    st.title("REGRAS OFICIAIS")
+    st.write("------regras vão aqui------")
