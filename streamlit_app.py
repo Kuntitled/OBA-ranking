@@ -1,11 +1,14 @@
 import streamlit as st
 from datetime import date
+import requests
+import io
 import pandas as pd
+from PIL import Image, ImageDraw, ImageFont
 from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
-tabOne, tabTwo, tabThree = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "✅ Regras"])
+tabOne, tabTwo, tabThree, tabFour = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "✅ Regras", "🐞 Gerar ID Blader"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -77,3 +80,48 @@ with tabTwo:
 with tabThree:
     st.title("REGRAS OFICIAIS")
     st.write("------regras vão aqui------")
+
+with tabFour:
+    st.subheader("🎖️ Gerador de ID Blader")
+
+    blader_names = df["blader"].tolist()
+    selected_name = st.selectbox("Escolha o blader", blader_names)
+
+    if st.button("Gerar Tag"):
+        # Get blader info
+        row = df[df["blader"] == selected_name].iloc[0]
+        name = row["blader"]
+        points = row["points"]
+        avatar_url = row["avatar"]
+
+        # Create blank background
+        tag_img = Image.new("RGB", (400, 200), color="#004488")  # blue background
+        draw = ImageDraw.Draw(tag_img)
+
+        # Load avatar
+        response = requests.get(avatar_url)
+        avatar = Image.open(io.BytesIO(response.content)).resize((80, 80)).convert("RGB")
+        avatar_circle = Image.new("L", (80, 80), 0)
+        draw_circle = ImageDraw.Draw(avatar_circle)
+        draw_circle.ellipse((0, 0, 80, 80), fill=255)
+        avatar.putalpha(avatar_circle)
+
+        tag_img.paste(avatar, (20, 60), avatar)
+
+        # Draw name and points
+        font = ImageFont.load_default()
+        draw.text((120, 70), f"{name}", font=font, fill="white")
+        draw.text((120, 100), f"{points} pontos", font=font, fill="white")
+
+        # Show image in Streamlit
+        st.image(tag_img, caption=f"Tag de {name}")
+
+        # Download option
+        buf = io.BytesIO()
+        tag_img.save(buf, format="PNG")
+        st.download_button(
+            label="📥 Baixar Tag",
+            data=buf.getvalue(),
+            file_name=f"{name}_tag.png",
+            mime="image/png"
+        )
