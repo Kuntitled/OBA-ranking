@@ -108,10 +108,26 @@ with tabFour:
 
         tag_img.paste(avatar, (50, 30), avatar)
 
-        # Draw name and points
-        font = ImageFont.load_default()
-        draw.text((30, 260), f"{name}", font=font, fill="white")
-        draw.text((30, 290), f"{points} pontos", font=font, fill="white")
+        # # Draw name and points
+        # font = ImageFont.load_default()
+        # draw.text((30, 260), f"{name}", font=font, fill="white")
+        # draw.text((30, 290), f"{points} pontos", font=font, fill="white")
+
+        # Load fonts
+        title_font = ImageFont.truetype("arial.ttf", 28)  # Bigger font for name
+        points_font = ImageFont.truetype("arial.ttf", 20)  # Smaller font for points
+
+        # Blader name - centered
+        name_text = name
+        name_w, name_h = draw.textsize(name_text, font=title_font)
+        name_x = (tag_img.width - name_w) // 2
+        draw.text((name_x, 260), name_text, font=title_font, fill="white")
+
+        # Points - centered just below
+        points_text = f"{points} pontos"
+        points_w, points_h = draw.textsize(points_text, font=points_font)
+        points_x = (tag_img.width - points_w) // 2
+        draw.text((points_x, 260 + name_h + 10), points_text, font=points_font, fill="white")
 
         # Show image in Streamlit
         st.image(tag_img, caption=f"Tag de {name}")
