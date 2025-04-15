@@ -114,8 +114,8 @@ with tabFour:
         # draw.text((30, 290), f"{points} pontos", font=font, fill="white")
 
         # Load fonts
-        title_font = ImageFont.truetype("arial.ttf", 28)  # Bigger font for name
-        points_font = ImageFont.truetype("arial.ttf", 20)  # Smaller font for points
+        title_font = ImageFont.truetype("fonts/Freshman.ttf", 28)  # Bigger font for name
+        points_font = ImageFont.truetype("fonts/Freshman.ttf", 20)  # Smaller font for points
 
         # Blader name - centered
         name_text = name
