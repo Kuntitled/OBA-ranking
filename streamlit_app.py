@@ -72,4 +72,4 @@ with tabOne:
     )
 
 with tabTwo:
-    st.dataframe(df[["blader", "points", "avatar"]], use_container_width=True)
+    st.dataframe(df[["blader_id", "blader", "points"]], use_container_width=True)
