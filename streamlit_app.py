@@ -95,44 +95,55 @@ with tabFour:
         avatar_url = row["avatar"]
 
         # Create blank background
-        tag_img = Image.new("RGB", (300, 500), color="#004488")  # blue background
+        tag_img = Image.new("RGB", (300, 500), color="#004488")
         draw = ImageDraw.Draw(tag_img)
 
-        # Load avatar
+        # Load and prepare avatar
         response = requests.get(avatar_url)
-        avatar = Image.open(io.BytesIO(response.content)).resize((200, 200)).convert("RGB")
-        avatar_circle = Image.new("L", (200, 200), 0)
-        draw_circle = ImageDraw.Draw(avatar_circle)
-        draw_circle.ellipse((0, 0, 200, 200), fill=255)
-        avatar.putalpha(avatar_circle)
+        avatar = Image.open(io.BytesIO(response.content)).resize((210, 210)).convert("RGBA")
 
-        tag_img.paste(avatar, (50, 30), avatar)
+        # Create circular mask and border
+        mask = Image.new("L", (210, 210), 0)
+        mask_draw = ImageDraw.Draw(mask)
+        mask_draw.ellipse((0, 0, 210, 210), fill=255)
 
-        # # Draw name and points
-        # font = ImageFont.load_default()
-        # draw.text((30, 260), f"{name}", font=font, fill="white")
-        # draw.text((30, 290), f"{points} pontos", font=font, fill="white")
+        # Create border circle
+        border = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
+        border_draw = ImageDraw.Draw(border)
+        border_draw.ellipse((0, 0, 210, 210), outline="white", width=6)
+
+        # Composite avatar inside border
+        avatar_with_alpha = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
+        avatar.putalpha(mask)
+        avatar_with_alpha.paste(avatar, (0, 0), avatar)
+        avatar_with_border = Image.alpha_composite(border, avatar_with_alpha)
+
+        # Paste avatar+border to background
+        tag_img.paste(avatar_with_border, (45, 30), avatar_with_border)
 
         # Load fonts
-        title_font = ImageFont.truetype("fonts/Freshman.ttf", 28)  # Bigger font for name
-        points_font = ImageFont.truetype("fonts/Freshman.ttf", 20)  # Smaller font for points
+        title_font = ImageFont.truetype("fonts/Freshman.ttf", 28)
+        points_font = ImageFont.truetype("fonts/Freshman.ttf", 20)
 
-        # Blader name - centered
-        name_text = name
-        name_w, name_h = draw.textsize(name_text, font=title_font)
+        # Centered name
+        name_bbox = title_font.getbbox(name)
+        name_w = name_bbox[2] - name_bbox[0]
+        name_h = name_bbox[3] - name_bbox[1]
         name_x = (tag_img.width - name_w) // 2
-        draw.text((name_x, 260), name_text, font=title_font, fill="white")
+        draw.text((name_x, 260), name, font=title_font, fill="white")
 
-        # Points - centered just below
+        # Centered points
         points_text = f"{points} pontos"
-        points_w, points_h = draw.textsize(points_text, font=points_font)
+        points_bbox = points_font.getbbox(points_text)
+        points_w = points_bbox[2] - points_bbox[0]
+        points_h = points_bbox[3] - points_bbox[1]
         points_x = (tag_img.width - points_w) // 2
         draw.text((points_x, 260 + name_h + 10), points_text, font=points_font, fill="white")
 
-        # Show image in Streamlit
+        # Show in Streamlit
         st.image(tag_img, caption=f"Tag de {name}")
 
-        # Download option
+        # Download button
         buf = io.BytesIO()
         tag_img.save(buf, format="PNG")
         st.download_button(
