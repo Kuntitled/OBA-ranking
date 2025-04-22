@@ -117,7 +117,7 @@ with tabFour: # ABA GERADOR ID BLADER
         draw.rectangle([stripe_x, 0, stripe_x + stripe_width, tag_img.height], fill="red")
 
         # TÍTULO
-        header_font = ImageFont.truetype("fonts/Freshman.ttf", 14)  # Or another font
+        header_font = ImageFont.truetype("fonts/MASQUE.ttf", 14) 
         header_text = "ORGANIZAÇÃO DE BEYBLADE DO AMAZONAS"
         header_w, header_h = draw.textbbox((0, 0), header_text, font=header_font)[2:]
         header_x = (tag_img.width - header_w) // 2
@@ -144,7 +144,7 @@ with tabFour: # ABA GERADOR ID BLADER
         avatar_with_border = Image.alpha_composite(border, avatar_with_alpha)
 
         # AVATAR
-        tag_img.paste(avatar_with_border, (45, 30), avatar_with_border)
+        tag_img.paste(avatar_with_border, (50, 40 + header_h), avatar_with_border)
 
         # CARREGAR FONTE
         title_font = ImageFont.truetype("fonts/Freshman.ttf", 28)
@@ -155,7 +155,7 @@ with tabFour: # ABA GERADOR ID BLADER
         name_w = name_bbox[2] - name_bbox[0]
         name_h = name_bbox[3] - name_bbox[1]
         name_x = (tag_img.width - name_w) // 2
-        draw.text((name_x, 260), name, font=title_font, fill="white")
+        draw.text((name_x, 270), name, font=title_font, fill="white")
 
         # PONTO CENTRALIZADO
         points_text = f"{points} pontos"
@@ -163,7 +163,7 @@ with tabFour: # ABA GERADOR ID BLADER
         points_w = points_bbox[2] - points_bbox[0]
         points_h = points_bbox[3] - points_bbox[1]
         points_x = (tag_img.width - points_w) // 2
-        draw.text((points_x, 260 + name_h + 10), points_text, font=points_font, fill="white")
+        draw.text((points_x, 270 + name_h + 10), points_text, font=points_font, fill="white")
 
         # MOSTRAR
         st.image(tag_img, caption=f"Tag de {name}")
