@@ -107,8 +107,21 @@ with tabFour: # ABA GERADOR ID BLADER
         avatar_url = row["avatar"]
 
         # FUNDO
-        tag_img = Image.new("RGB", (300, 500), color="#004488")
+        
+        tag_img = Image.new("RGB", (300, 500), color="black")
         draw = ImageDraw.Draw(tag_img)
+
+        # LISTRA
+        stripe_width = 60
+        stripe_x = (tag_img.width - stripe_width) // 2
+        draw.rectangle([stripe_x, 0, stripe_x + stripe_width, tag_img.height], fill="red")
+
+        # TÍTULO
+        header_font = ImageFont.truetype("fonts/Freshman.ttf", 14)  # Or another font
+        header_text = "ORGANIZAÇÃO DE BEYBLADE DO AMAZONAS"
+        header_w, header_h = draw.textbbox((0, 0), header_text, font=header_font)[2:]
+        header_x = (tag_img.width - header_w) // 2
+        draw.text((header_x, 10), header_text, font=header_font, fill="white")
 
         # AVATAR
         response = requests.get(avatar_url)
