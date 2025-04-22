@@ -177,18 +177,18 @@ with tabFive:  # ABA GERADOR ID BLADER
         draw.text((points_x, points_y), points_text, font=points_font, fill="white")
 
         # ESTATÍSTICAS (W/L/R)
-        stats_font = ImageFont.truetype("fonts/Freshman.ttf", 16)
+        stats_font = ImageFont.truetype("fonts/MASQUE.ttf", 16)
         wins = int(row.get("wins", 0))
         losses = int(row.get("losses", 0))
         ratio = float(row.get("win_loss_ratio", 0))
         ratio_str = f"{ratio:.2f}"
 
-        stats_y = points_y + 30  # spacing below points
+        stats_y = points_y + 40  # spacing below points
 
         stat_lines = [
             f"Vitórias: {wins}",
             f"Derrotas: {losses}",
-            f"Ratio: {ratio_str}"
+            f"V/D: {ratio_str}"
         ]
 
         for line in stat_lines:
@@ -196,7 +196,7 @@ with tabFive:  # ABA GERADOR ID BLADER
             line_w = line_bbox[2] - line_bbox[0]
             line_x = (tag_img.width - line_w) // 2
             draw.text((line_x, stats_y), line, font=stats_font, fill="white")
-            stats_y += 20  # spacing between lines
+            stats_y += 25  # spacing between lines
             
         # MOSTRAR
         st.image(tag_img, caption=f"Tag de {name}")
