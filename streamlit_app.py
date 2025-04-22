@@ -91,7 +91,10 @@ with tabTwo: # ABA TABELA COMPLETA
 
 with tabThree: # ABA EVENTOS
     st.title("PRÓXIMO EVENTO:")
+    st.write("TORNEIO OFICIAL")
     st.write("Dia 18 de Maio de 2025")
+    st.markdown("---")
+    st.write("Mais informações em breve!")
 
 with tabFour: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
