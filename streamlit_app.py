@@ -89,6 +89,10 @@ with tabTwo: # ABA TABELA COMPLETA
     use_container_width=True
 )
 
+with tabEventos:
+    st.title("PRÓXIMO EVENTO:")
+    st.write("Dia 18 de Maio de 2025")
+    
 with tabThree: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
     st.write("------regras vão aqui------")
