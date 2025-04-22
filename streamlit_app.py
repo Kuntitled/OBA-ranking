@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
-tabOne, tabTwo, tabThree, tabFour = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "✅ Regras", "🐞 Gerar ID Blader"])
+tabOne, tabTwo, tabThree, tabFour, tabFive = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras", "🐞 Gerar ID Blader"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -89,15 +89,15 @@ with tabTwo: # ABA TABELA COMPLETA
     use_container_width=True
 )
 
-with tabEventos:
+with tabThree: # ABA EVENTOS
     st.title("PRÓXIMO EVENTO:")
     st.write("Dia 18 de Maio de 2025")
-    
-with tabThree: # ABA REGRAS
+
+with tabFour: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
     st.write("------regras vão aqui------")
 
-with tabFour:  # ABA GERADOR ID BLADER
+with tabFive:  # ABA GERADOR ID BLADER
     st.subheader("🎖️ Gerador de ID Blader")
 
     blader_names = df["blader"].tolist()
