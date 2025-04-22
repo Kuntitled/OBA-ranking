@@ -93,7 +93,7 @@ with tabThree: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
     st.write("------regras vão aqui------")
 
-with tabFour: # ABA GERADOR ID BLADER
+with tabFour:  # ABA GERADOR ID BLADER
     st.subheader("🎖️ Gerador de ID Blader")
 
     blader_names = df["blader"].tolist()
@@ -107,63 +107,67 @@ with tabFour: # ABA GERADOR ID BLADER
         avatar_url = row["avatar"]
 
         # FUNDO
-        
         tag_img = Image.new("RGB", (300, 500), color="black")
         draw = ImageDraw.Draw(tag_img)
 
-        # LISTRA
+        # LISTRA VERMELHA
         stripe_width = 60
         stripe_x = (tag_img.width - stripe_width) // 2
         draw.rectangle([stripe_x, 0, stripe_x + stripe_width, tag_img.height], fill="red")
 
-        # TÍTULO
-        header_font = ImageFont.truetype("fonts/MASQUE.ttf", 14) 
-        header_text = "ORGANIZAÇÃO DE BEYBLADE DO AMAZONAS"
-        header_w, header_h = draw.textbbox((0, 0), header_text, font=header_font)[2:]
-        header_x = (tag_img.width - header_w) // 2
-        draw.text((header_x, 10), header_text, font=header_font, fill="white")
+        # TÍTULO (duas linhas centralizadas)
+        header_font = ImageFont.truetype("fonts/MASQUE.ttf", 14)
+        header_lines = ["ORGANIZAÇÃO DE", "BEYBLADE DO AMAZONAS"]
+        header_y = 10
+
+        for line in header_lines:
+            line_bbox = draw.textbbox((0, 0), line, font=header_font)
+            line_w = line_bbox[2] - line_bbox[0]
+            line_h = line_bbox[3] - line_bbox[1]
+            line_x = (tag_img.width - line_w) // 2
+            draw.text((line_x, header_y), line, font=header_font, fill="white")
+            header_y += line_h + 2  # move down for next line
 
         # AVATAR
         response = requests.get(avatar_url)
         avatar = Image.open(io.BytesIO(response.content)).resize((210, 210)).convert("RGBA")
 
-        # MARCAÇÃO E BORDA
+        # MÁSCARA E BORDA CIRCULAR
         mask = Image.new("L", (210, 210), 0)
         mask_draw = ImageDraw.Draw(mask)
         mask_draw.ellipse((0, 0, 210, 210), fill=255)
 
-        # BORDA CIRCULAR
         border = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
         border_draw = ImageDraw.Draw(border)
         border_draw.ellipse((0, 0, 210, 210), outline="white", width=6)
 
-        # AVATAR 
         avatar_with_alpha = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
         avatar.putalpha(mask)
         avatar_with_alpha.paste(avatar, (0, 0), avatar)
         avatar_with_border = Image.alpha_composite(border, avatar_with_alpha)
 
-        # AVATAR
-        tag_img.paste(avatar_with_border, (50, 40 + header_h), avatar_with_border)
+        avatar_y = header_y + 10  # place avatar below the header
+        tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
 
-        # CARREGAR FONTE
+        # FONTE
         title_font = ImageFont.truetype("fonts/Freshman.ttf", 28)
         points_font = ImageFont.truetype("fonts/Freshman.ttf", 20)
 
         # NOME CENTRALIZADO
+        name_y = avatar_y + 210 + 10
         name_bbox = title_font.getbbox(name)
         name_w = name_bbox[2] - name_bbox[0]
         name_h = name_bbox[3] - name_bbox[1]
         name_x = (tag_img.width - name_w) // 2
-        draw.text((name_x, 270), name, font=title_font, fill="white")
+        draw.text((name_x, name_y), name, font=title_font, fill="white")
 
-        # PONTO CENTRALIZADO
+        # PONTOS CENTRALIZADO
         points_text = f"{points} pontos"
+        points_y = name_y + name_h + 10
         points_bbox = points_font.getbbox(points_text)
         points_w = points_bbox[2] - points_bbox[0]
-        points_h = points_bbox[3] - points_bbox[1]
         points_x = (tag_img.width - points_w) // 2
-        draw.text((points_x, 270 + name_h + 10), points_text, font=points_font, fill="white")
+        draw.text((points_x, points_y), points_text, font=points_font, fill="white")
 
         # MOSTRAR
         st.image(tag_img, caption=f"Tag de {name}")
