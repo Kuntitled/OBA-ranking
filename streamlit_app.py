@@ -153,7 +153,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         avatar_with_alpha.paste(avatar, (0, 0), avatar)
         avatar_with_border = Image.alpha_composite(border, avatar_with_alpha)
 
-        avatar_y = header_y + 10  # place avatar below the header
+        avatar_y = header_y + 10  
         tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
 
         # FONTE
@@ -176,6 +176,28 @@ with tabFive:  # ABA GERADOR ID BLADER
         points_x = (tag_img.width - points_w) // 2
         draw.text((points_x, points_y), points_text, font=points_font, fill="white")
 
+        # ESTATÍSTICAS (W/L/R)
+        stats_font = ImageFont.truetype("fonts/Freshman.ttf", 16)
+        wins = int(row.get("wins", 0))
+        losses = int(row.get("losses", 0))
+        ratio = float(row.get("win_loss_ratio", 0))
+        ratio_str = f"{ratio:.2f}"
+
+        stats_y = points_y + 30  # spacing below points
+
+        stat_lines = [
+            f"Vitórias: {wins}",
+            f"Derrotas: {losses}",
+            f"Ratio: {ratio_str}"
+        ]
+
+        for line in stat_lines:
+            line_bbox = stats_font.getbbox(line)
+            line_w = line_bbox[2] - line_bbox[0]
+            line_x = (tag_img.width - line_w) // 2
+            draw.text((line_x, stats_y), line, font=stats_font, fill="white")
+            stats_y += 20  # spacing between lines
+            
         # MOSTRAR
         st.image(tag_img, caption=f"Tag de {name}")
 
