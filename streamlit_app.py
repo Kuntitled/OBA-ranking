@@ -157,8 +157,8 @@ with tabFive:  # ABA GERADOR ID BLADER
         tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
 
         # FONTE
-        title_font = ImageFont.truetype("fonts/Overseer.ttf", 28)
-        points_font = ImageFont.truetype("fonts/Overseer.ttf", 20)
+        title_font = ImageFont.truetype("fonts/American Captain.ttf", 28)
+        points_font = ImageFont.truetype("fonts/American Captain.ttf", 20)
 
         # NOME CENTRALIZADO
         name_y = avatar_y + 210 + 10
@@ -177,7 +177,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         draw.text((points_x, points_y), points_text, font=points_font, fill="white")
 
         # ESTATÍSTICAS (W/L/R)
-        stats_font = ImageFont.truetype("fonts/Overseer.ttf", 16)
+        stats_font = ImageFont.truetype("fonts/American Captain.ttf", 16)
         wins = int(row.get("wins", 0))
         losses = int(row.get("losses", 0))
         ratio = float(row.get("win_loss_ratio", 0))
