@@ -183,7 +183,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         ratio = float(row.get("win_loss_ratio", 0))
         ratio_str = f"{ratio:.2f}"
 
-        stats_y = points_y + 40  # spacing below points
+        stats_y = points_y + 65  # spacing below points
 
         stat_lines = [
             f"Vitorias: {wins}",
