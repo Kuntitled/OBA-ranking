@@ -169,7 +169,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         draw.text((name_x, name_y), name, font=title_font, fill="white")
 
         # PONTOS CENTRALIZADO
-        points_text = f"{points} pontos"
+        points_text = f"{int(points)} pontos"
         points_y = name_y + name_h + 10
         points_bbox = points_font.getbbox(points_text)
         points_w = points_bbox[2] - points_bbox[0]
