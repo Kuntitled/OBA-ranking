@@ -210,10 +210,11 @@ with tabFive:  # ABA GERADOR ID BLADER
 
         # MOSTRAR
         st.image(tag_img, caption=f"Tag de {name}")
+        high_res_tag = tag_img.resize((600, 1000), resample=Image.LANCZOS)
 
         # BOTÃO DOWNLOAD
         buf = io.BytesIO()
-        tag_img.save(buf, format="PNG")
+        high_res_tag.save(buf, format="PNG")
         st.download_button(
             label="📥 Baixar Tag",
             data=buf.getvalue(),
