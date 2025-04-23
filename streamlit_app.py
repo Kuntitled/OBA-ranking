@@ -171,20 +171,20 @@ with tabFive:  # ABA GERADOR ID BLADER
 
         # PONTOS CENTRALIZADO
         points_text = f"{int(points)} pontos"
-        points_y = name_y + name_h + 20
+        points_y = name_y + name_h + 30
         points_bbox = points_font.getbbox(points_text)
         points_w = points_bbox[2] - points_bbox[0]
         points_x = (tag_img.width - points_w) // 2
         draw.text((points_x, points_y), points_text, font=points_font, fill="white")
 
         # ESTATÍSTICAS (W/L/R)
-        stats_font = ImageFont.truetype("fonts/American Captain.ttf", 16)
+        stats_font = ImageFont.truetype("fonts/American Captain.ttf", 24)
         wins = int(row.get("wins", 0))
         losses = int(row.get("losses", 0))
         ratio = float(row.get("win_loss_ratio", 0))
         ratio_str = f"{ratio:.2f}"
 
-        stats_y = points_y + 65  # spacing below points
+        stats_y = points_y + 55  # spacing below points
 
         stat_lines = [
             f"Vitorias: {wins}",
