@@ -159,7 +159,7 @@ with tabFive:  # ABA GERADOR ID BLADER
 
         # FONTE
         title_font = ImageFont.truetype("fonts/American Captain.ttf", 36)
-        points_font = ImageFont.truetype("fonts/American Captain.ttf", 28)
+        points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
 
         # NOME CENTRALIZADO
         name_y = avatar_y + 210 + 10
@@ -171,7 +171,7 @@ with tabFive:  # ABA GERADOR ID BLADER
 
         # PONTOS CENTRALIZADO
         points_text = f"{int(points)} pontos"
-        points_y = name_y + name_h + 10
+        points_y = name_y + name_h + 20
         points_bbox = points_font.getbbox(points_text)
         points_w = points_bbox[2] - points_bbox[0]
         points_x = (tag_img.width - points_w) // 2
