@@ -149,55 +149,54 @@ with tabFive:  # ABA GERADOR ID BLADER
         border = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
         border_draw = ImageDraw.Draw(border)
         border_draw.ellipse((0, 0, 210, 210), outline="white", width=6)
-
         avatar_with_alpha = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
         avatar.putalpha(mask)
         avatar_with_alpha.paste(avatar, (0, 0), avatar)
         avatar_with_border = Image.alpha_composite(border, avatar_with_alpha)
 
-        avatar_y = header_y + 10  
+        avatar_y = header_y + 10
         tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
 
-        # FONTE
+        # FONTES
         title_font = ImageFont.truetype("fonts/American Captain.ttf", 36)
         points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
-
-        id_text = f"#{blader_id}"
         id_font = ImageFont.truetype("fonts/Freshman.ttf", 18)
+        stats_font = ImageFont.truetype("fonts/American Captain.ttf", 24)
+
+        # ID CENTRALIZADO ABAIXO DO AVATAR
+        id_text = f"#{blader_id}"
         id_bbox = id_font.getbbox(id_text)
         id_w = id_bbox[2] - id_bbox[0]
         id_h = id_bbox[3] - id_bbox[1]
         id_x = (tag_img.width - id_w) // 2
-        id_y = 320  # Adjust as needed
+        id_y = avatar_y + 210 + 5
         draw.text((id_x, id_y), id_text, font=id_font, fill="white")
 
         # NOME CENTRALIZADO
-        name_y = avatar_y + 210 + 10
+        name_y = id_y + id_h + 5
         name_bbox = title_font.getbbox(name)
         name_w = name_bbox[2] - name_bbox[0]
         name_h = name_bbox[3] - name_bbox[1]
         name_x = (tag_img.width - name_w) // 2
         draw.text((name_x, name_y), name, font=title_font, fill="white")
 
-        # PONTOS CENTRALIZADO
+        # PONTOS CENTRALIZADOS
         points_text = f"{int(points)} pontos"
-        points_y = name_y + name_h + 30
+        points_y = name_y + name_h + 10
         points_bbox = points_font.getbbox(points_text)
         points_w = points_bbox[2] - points_bbox[0]
         points_x = (tag_img.width - points_w) // 2
         draw.text((points_x, points_y), points_text, font=points_font, fill="white")
 
-        # ESTATÍSTICAS (W/L/R)
-        stats_font = ImageFont.truetype("fonts/American Captain.ttf", 24)
+        # ESTATÍSTICAS (V/D/R)
         wins = int(row.get("wins", 0))
         losses = int(row.get("losses", 0))
         ratio = float(row.get("win_loss_ratio", 0))
         ratio_str = f"{ratio:.2f}"
 
-        stats_y = points_y + 55  # spacing below points
-
+        stats_y = points_y + 50  # espaçamento abaixo dos pontos
         stat_lines = [
-            f"Vitorias: {wins}",
+            f"Vitórias: {wins}",
             f"Derrotas: {losses}",
             f"V/D: {ratio_str}"
         ]
@@ -207,8 +206,8 @@ with tabFive:  # ABA GERADOR ID BLADER
             line_w = line_bbox[2] - line_bbox[0]
             line_x = (tag_img.width - line_w) // 2
             draw.text((line_x, stats_y), line, font=stats_font, fill="white")
-            stats_y += 25  # spacing between lines
-            
+            stats_y += 25  # espaçamento entre linhas
+
         # MOSTRAR
         st.image(tag_img, caption=f"Tag de {name}")
 
