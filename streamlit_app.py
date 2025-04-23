@@ -34,14 +34,15 @@ with tabOne:
         row = top3.iloc[i]
         name = row["blader"]
         points = int(row["points"])
-        image_url = row["avatar"] 
+        image_url = row["avatar"]
+        id_top10 = row["blader_id"] 
 
         st.markdown(
             f"""
             <div style="display: flex; align-items: center; margin-bottom: 15px;">
                 <img src="{image_url}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
                 <div>
-                    <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} {name}</div>
+                    <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} #{id_top10} {name}</div>
                     <div style="font-size: 14px; color: gray;">{points} pontos</div>
                 </div>
             </div>
