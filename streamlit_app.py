@@ -75,6 +75,7 @@ with tabOne:
     )
 
 with tabTwo: # ABA TABELA COMPLETA
+    df["blader_id"] = df["blader_id"].astype(str).str.zfill(4)
     st.dataframe(
     df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio"]]
     .rename(columns={
