@@ -126,6 +126,8 @@ with tabThree: # ABA EVENTOS
             """,
         unsafe_allow_html=True
     )
+    st.markdown("---")
+    st.write("CLIQUE NO BOTÃO PARA ENTRAR EM CONTATO PARA SE INSCREVER")
     if st.button("🟢 WhatsApp"):
         st.write("[Abrir chat](https://wa.me/559299993714?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20torneio%21)")
 
