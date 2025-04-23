@@ -35,7 +35,7 @@ with tabOne:
         name = row["blader"]
         points = int(row["points"])
         image_url = row["avatar"]
-        id_top10 = row["blader_id"] 
+        id_top10 = int(row["blader_id"]) 
 
         st.markdown(
             f"""
