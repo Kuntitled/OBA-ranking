@@ -169,7 +169,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         id_w = id_bbox[2] - id_bbox[0]
         id_h = id_bbox[3] - id_bbox[1]
         id_x = (tag_img.width - id_w) // 2
-        id_y = avatar_y + 210 + 5
+        id_y = avatar_y + 210 + 15
         draw.text((id_x, id_y), id_text, font=id_font, fill="white")
 
         # NOME CENTRALIZADO
