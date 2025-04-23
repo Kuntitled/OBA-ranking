@@ -173,7 +173,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         draw.text((id_x, id_y), id_text, font=id_font, fill="white")
 
         # NOME CENTRALIZADO
-        name_y = id_y + id_h + 5
+        name_y = id_y + id_h + 10
         name_bbox = title_font.getbbox(name)
         name_w = name_bbox[2] - name_bbox[0]
         name_h = name_bbox[3] - name_bbox[1]
@@ -182,7 +182,7 @@ with tabFive:  # ABA GERADOR ID BLADER
 
         # PONTOS CENTRALIZADOS
         points_text = f"{int(points)} pontos"
-        points_y = name_y + name_h + 10
+        points_y = name_y + name_h + 20
         points_bbox = points_font.getbbox(points_text)
         points_w = points_bbox[2] - points_bbox[0]
         points_x = (tag_img.width - points_w) // 2
@@ -196,7 +196,7 @@ with tabFive:  # ABA GERADOR ID BLADER
 
         stats_y = points_y + 50  # espaçamento abaixo dos pontos
         stat_lines = [
-            f"Vitórias: {wins}",
+            f"Vitorias: {wins}",
             f"Derrotas: {losses}",
             f"V/D: {ratio_str}"
         ]
