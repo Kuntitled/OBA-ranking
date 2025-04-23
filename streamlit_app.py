@@ -35,14 +35,16 @@ with tabOne:
         name = row["blader"]
         points = int(row["points"])
         image_url = row["avatar"]
-        id_top10 = int(row["blader_id"]) 
+        id_top10 = int(row["blader_id"])
+        id_str_top10 = str(id_top10).zfill(3)
+         
 
         st.markdown(
             f"""
             <div style="display: flex; align-items: center; margin-bottom: 15px;">
                 <img src="{image_url}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
                 <div>
-                    <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} #{id_top10} {name}</div>
+                    <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} #{id_str_top10} {name}</div>
                     <div style="font-size: 14px; color: gray;">{points} pontos</div>
                 </div>
             </div>
