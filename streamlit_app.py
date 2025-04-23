@@ -127,7 +127,7 @@ with tabThree: # ABA EVENTOS
         unsafe_allow_html=True
     )
     if st.button("🟢 WhatsApp"):
-        st.write("[Abrir chat](https://wa.me/559299993714v?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20torneio%21)")
+        st.write("[Abrir chat](https://wa.me/559299993714?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20torneio%21)")
 
 
 with tabFour: # ABA REGRAS
