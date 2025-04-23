@@ -113,6 +113,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         name = row["blader"]
         points = row["points"]
         avatar_url = row["avatar"]
+        blader_id = str(int(row["blader_id"])).zfill(3)
 
         # FUNDO
         tag_img = Image.new("RGB", (300, 500), color="black")
@@ -160,6 +161,15 @@ with tabFive:  # ABA GERADOR ID BLADER
         # FONTE
         title_font = ImageFont.truetype("fonts/American Captain.ttf", 36)
         points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
+
+        id_text = f"#{blader_id}"
+        id_font = ImageFont.truetype("fonts/Freshman.ttf", 18)
+        id_bbox = id_font.getbbox(id_text)
+        id_w = id_bbox[2] - id_bbox[0]
+        id_h = id_bbox[3] - id_bbox[1]
+        id_x = (tag_img.width - id_w) // 2
+        id_y = 320  # Adjust as needed
+        draw.text((id_x, id_y), id_text, font=id_font, fill="white")
 
         # NOME CENTRALIZADO
         name_y = avatar_y + 210 + 10
