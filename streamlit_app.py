@@ -33,7 +33,7 @@ with tabOne:
     for i in range(3):
         row = top3.iloc[i]
         name = row["blader"]
-        points = row["points"]
+        points = int(row["points"])
         image_url = row["avatar"] 
 
         st.markdown(
@@ -52,11 +52,12 @@ with tabOne:
 
     # OTHER PLACEMENTS
     st.subheader("🏅 Demais Colocados:")
-    rest = df.iloc[3:].reset_index(drop=True)
+    #rest = df.iloc[3:].reset_index(drop=True)
+    rest = df.iloc[3:10].reset_index(drop=True)
 
     for i, row in rest.iterrows():
         st.markdown(
-            f"**#{i + 4}** — {row['blader']} ({row['points']} pontos)"
+            f"**#{i + 4}** — {row['blader']} ({int(row['points'])} pontos)"
         )
 
     # DIVIDER
