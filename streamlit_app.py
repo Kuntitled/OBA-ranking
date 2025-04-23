@@ -173,7 +173,7 @@ with tabFive:  # ABA GERADOR ID BLADER
         draw.text((id_x, id_y), id_text, font=id_font, fill="white")
 
         # NOME CENTRALIZADO
-        name_y = id_y + id_h + 10
+        name_y = id_y + id_h + 20
         name_bbox = title_font.getbbox(name)
         name_w = name_bbox[2] - name_bbox[0]
         name_h = name_bbox[3] - name_bbox[1]
