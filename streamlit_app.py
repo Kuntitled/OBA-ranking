@@ -95,7 +95,7 @@ with tabTwo: # ABA TABELA COMPLETA
 )
 
 with tabThree: # ABA EVENTOS
-    st.title("REGRAS & DETALHES DO TORNEIO")
+    st.title("REGRAS & DETALHES DO PRÓXIMO TORNEIO")
     st.markdown(
         """
     🏆 **Torneio Oficial Beyblade Amazonas** — 1×1 até 4 Pontos
