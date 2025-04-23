@@ -60,7 +60,7 @@ with tabOne:
 
     for i, row in rest.iterrows():
         st.markdown(
-            f"**#{i + 4}** — {row['blader']} ({int(row['points'])} pontos)"
+            f"**#{i + 4}** — #{id_str_top10} {row['blader']} ({int(row['points'])} pontos)"
         )
 
     # DIVIDER
