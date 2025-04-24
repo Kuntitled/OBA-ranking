@@ -127,7 +127,11 @@ with tabThree: # ABA EVENTOS
         unsafe_allow_html=True
     )
     st.markdown("---")
-    st.write("CLIQUE NO BOTÃO PARA ENTRAR EM CONTATO PARA SE INSCREVER")
+    st.write("Pix da inscrição:")
+    st.write("92 99999-3714")
+    st.write("Carlos Francisco Bussons do Vale")
+    st.write("Nubank")
+    st.write("CLIQUE NO BOTÃO PARA ENTRAR EM CONTATO PARA SE INSCREVER E ENVIAR O COMPROVANTE DO PIX")
     if st.button("🟢 WhatsApp"):
         st.write("[Abrir chat](https://wa.me/559299993714?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20torneio%21)")
 
