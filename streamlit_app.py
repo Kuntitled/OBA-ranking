@@ -143,40 +143,40 @@ with tabFour: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
     st.write("------regras vão aqui------")
 
-with tabFive:  # ABA GERADOR ID BLADER
-    st.subheader("🎖️ Gerador de ID Blader")
+with tabFive:  # ABA GERADOR BLADER TAG
+    st.subheader("🎖️ Gerador de Blader Tag")
 
-    # 1) Input blader_id as zero-padded 3‑digit string
+    # INPUT DO ID BLADER
     input_id = st.text_input(
         "Digite seu ID de Blader (3 dígitos, ex: 001)",
-        value="001",
+        value="005",
         max_chars=3
     )
 
     if st.button("Gerar Tag"):
-        # 2) Prepare ID column for lookup
+        # PESQUISAR ID
         df["blader_id_str"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
 
         if input_id not in df["blader_id_str"].values:
             st.error(f"ID {input_id} não encontrado. Verifique e tente novamente.")
         else:
-            # 3) Fetch row by ID
+            # PUXAR ID
             row = df[df["blader_id_str"] == input_id].iloc[0]
             name = row["blader"]
             points = row["points"]
             avatar_url = row["avatar"]
             blader_id = input_id
 
-            # 4) Create base tag (300×500 px)
+            # TAG BASE
             tag_img = Image.new("RGB", (300, 500), color="black")
             draw = ImageDraw.Draw(tag_img)
 
-            # 5) Red stripe center
+            # LISTRA VERMELHA
             stripe_w = 60
             stripe_x = (tag_img.width - stripe_w) // 2
             draw.rectangle([stripe_x, 0, stripe_x + stripe_w, tag_img.height], fill="red")
 
-            # 6) Header (two centered lines)
+            # CABEÇALHO
             header_font = ImageFont.truetype("fonts/MASQUE.ttf", 14)
             header_lines = ["ORGANIZAÇÃO DE", "BEYBLADE DO AMAZONAS"]
             header_y = 10
@@ -187,13 +187,13 @@ with tabFive:  # ABA GERADOR ID BLADER
                 draw.text((x, header_y), line, font=header_font, fill="white")
                 header_y += h + 2
 
-            # 7) Avatar with circular mask + white border
+            # AVATAR E BORDA
             resp = requests.get(avatar_url)
             avatar = Image.open(io.BytesIO(resp.content)).resize((210, 210)).convert("RGBA")
             mask = Image.new("L", (210, 210), 0)
             ImageDraw.Draw(mask).ellipse((0, 0, 210, 210), fill=255)
             border = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
-            ImageDraw.Draw(border).ellipse((0, 0, 210, 210), outline="white", width=6)
+            ImageDraw.Draw(border).ellipse((0, 0, 210, 210), outline="white", width=12) #LARGURA BORDA
             avatar.putalpha(mask)
             laid = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
             laid.paste(avatar, (0, 0), avatar)
@@ -201,33 +201,33 @@ with tabFive:  # ABA GERADOR ID BLADER
             avatar_y = header_y + 10
             tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
 
-            # 8) Fonts for ID, name, points, stats
+            # FONTES
             id_font     = ImageFont.truetype("fonts/Freshman.ttf", 18)
             name_font   = ImageFont.truetype("fonts/American Captain.ttf", 36)
             points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
             stats_font  = ImageFont.truetype("fonts/American Captain.ttf", 24)
 
-            # 9) Draw ID (#001) centered below avatar
+            # BLADER ID
             id_text = f"#{blader_id}"
             bbox = id_font.getbbox(id_text)
             x = (tag_img.width - (bbox[2]-bbox[0])) // 2
             y = avatar_y + 210 + 15
             draw.text((x, y), id_text, font=id_font, fill="white")
 
-            # 10) Draw name
+            # NOME
             name_y = y + (bbox[3]-bbox[1]) + 15
             bbox = name_font.getbbox(name)
             x = (tag_img.width - (bbox[2]-bbox[0])) // 2
             draw.text((x, name_y), name, font=name_font, fill="white")
 
-            # 11) Draw points (integer)
+            # PONTOS
             pts_text = f"{int(points)} pontos"
             pts_y = name_y + (bbox[3]-bbox[1]) + 25
             bbox = points_font.getbbox(pts_text)
             x = (tag_img.width - (bbox[2]-bbox[0])) // 2
             draw.text((x, pts_y), pts_text, font=points_font, fill="white")
 
-            # 12) Draw stats (wins/losses/ratio)
+            # ESTATÍSTICAS
             wins, losses = int(row.get("wins", 0)), int(row.get("losses", 0))
             ratio = float(row.get("win_loss_ratio", 0))
             stats = [f"Vitorias: {wins}", f"Derrotas: {losses}", f"V/D: {ratio:.2f}"]
@@ -238,10 +238,10 @@ with tabFive:  # ABA GERADOR ID BLADER
                 draw.text((x, stats_y), line, font=stats_font, fill="white")
                 stats_y += (bbox[3]-bbox[1]) + 5
 
-            # 13) Upscale 2x for higher resolution download
+            # UPSCALE
             high_res = tag_img.resize((600, 1000), resample=Image.LANCZOS)
 
-            # 14) Display and download
+            # MOSTRAR E BAIXAR
             st.image(high_res, caption=f"Tag de {name}")
             buf = io.BytesIO()
             high_res.save(buf, format="PNG")
