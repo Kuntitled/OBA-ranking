@@ -211,18 +211,18 @@ with tabFive:  # ABA GERADOR ID BLADER
             id_text = f"#{blader_id}"
             bbox = id_font.getbbox(id_text)
             x = (tag_img.width - (bbox[2]-bbox[0])) // 2
-            y = avatar_y + 210 + 5
+            y = avatar_y + 210 + 15
             draw.text((x, y), id_text, font=id_font, fill="white")
 
             # 10) Draw name
-            name_y = y + (bbox[3]-bbox[1]) + 5
+            name_y = y + (bbox[3]-bbox[1]) + 15
             bbox = name_font.getbbox(name)
             x = (tag_img.width - (bbox[2]-bbox[0])) // 2
             draw.text((x, name_y), name, font=name_font, fill="white")
 
             # 11) Draw points (integer)
             pts_text = f"{int(points)} pontos"
-            pts_y = name_y + (bbox[3]-bbox[1]) + 10
+            pts_y = name_y + (bbox[3]-bbox[1]) + 20
             bbox = points_font.getbbox(pts_text)
             x = (tag_img.width - (bbox[2]-bbox[0])) // 2
             draw.text((x, pts_y), pts_text, font=points_font, fill="white")
@@ -231,7 +231,7 @@ with tabFive:  # ABA GERADOR ID BLADER
             wins, losses = int(row.get("wins", 0)), int(row.get("losses", 0))
             ratio = float(row.get("win_loss_ratio", 0))
             stats = [f"Vitórias: {wins}", f"Derrotas: {losses}", f"V/D: {ratio:.2f}"]
-            stats_y = pts_y + (bbox[3]-bbox[1]) + 15
+            stats_y = pts_y + (bbox[3]-bbox[1]) + 50
             for line in stats:
                 bbox = stats_font.getbbox(line)
                 x = (tag_img.width - (bbox[2]-bbox[0])) // 2
