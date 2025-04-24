@@ -137,6 +137,7 @@ with tabThree: # ABA EVENTOS
 
     st.markdown("---")
     st.write("Mais informações em breve!")
+    st.write("Nos acompanhe nas redes sociais!")
 
 with tabFour: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
