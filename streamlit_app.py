@@ -146,120 +146,108 @@ with tabFour: # ABA REGRAS
 with tabFive:  # ABA GERADOR ID BLADER
     st.subheader("🎖️ Gerador de ID Blader")
 
-    blader_names = df["blader"].tolist()
-    selected_name = st.selectbox("Escolha o blader", blader_names)
+    # 1) Input blader_id as zero-padded 3‑digit string
+    input_id = st.text_input(
+        "Digite seu ID de Blader (3 dígitos, ex: 001)",
+        value="001",
+        max_chars=3
+    )
 
     if st.button("Gerar Tag"):
-        # INFORMAÇÃO BLADER
-        row = df[df["blader"] == selected_name].iloc[0]
-        name = row["blader"]
-        points = row["points"]
-        avatar_url = row["avatar"]
-        blader_id = str(int(row["blader_id"])).zfill(3)
+        # 2) Prepare ID column for lookup
+        df["blader_id_str"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
 
-        # FUNDO
-        tag_img = Image.new("RGB", (300, 500), color="black")
-        draw = ImageDraw.Draw(tag_img)
+        if input_id not in df["blader_id_str"].values:
+            st.error(f"ID {input_id} não encontrado. Verifique e tente novamente.")
+        else:
+            # 3) Fetch row by ID
+            row = df[df["blader_id_str"] == input_id].iloc[0]
+            name = row["blader"]
+            points = row["points"]
+            avatar_url = row["avatar"]
+            blader_id = input_id
 
-        # LISTRA VERMELHA
-        stripe_width = 60
-        stripe_x = (tag_img.width - stripe_width) // 2
-        draw.rectangle([stripe_x, 0, stripe_x + stripe_width, tag_img.height], fill="red")
+            # 4) Create base tag (300×500 px)
+            tag_img = Image.new("RGB", (300, 500), color="black")
+            draw = ImageDraw.Draw(tag_img)
 
-        # TÍTULO (duas linhas centralizadas)
-        header_font = ImageFont.truetype("fonts/MASQUE.ttf", 14)
-        header_lines = ["ORGANIZAÇÃO DE", "BEYBLADE DO AMAZONAS"]
-        header_y = 10
+            # 5) Red stripe center
+            stripe_w = 60
+            stripe_x = (tag_img.width - stripe_w) // 2
+            draw.rectangle([stripe_x, 0, stripe_x + stripe_w, tag_img.height], fill="red")
 
-        for line in header_lines:
-            line_bbox = draw.textbbox((0, 0), line, font=header_font)
-            line_w = line_bbox[2] - line_bbox[0]
-            line_h = line_bbox[3] - line_bbox[1]
-            line_x = (tag_img.width - line_w) // 2
-            draw.text((line_x, header_y), line, font=header_font, fill="white")
-            header_y += line_h + 2  # move down for next line
+            # 6) Header (two centered lines)
+            header_font = ImageFont.truetype("fonts/MASQUE.ttf", 14)
+            header_lines = ["ORGANIZAÇÃO DE", "BEYBLADE DO AMAZONAS"]
+            header_y = 10
+            for line in header_lines:
+                bbox = draw.textbbox((0, 0), line, font=header_font)
+                w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+                x = (tag_img.width - w) // 2
+                draw.text((x, header_y), line, font=header_font, fill="white")
+                header_y += h + 2
 
-        # AVATAR
-        response = requests.get(avatar_url)
-        avatar = Image.open(io.BytesIO(response.content)).resize((210, 210)).convert("RGBA")
+            # 7) Avatar with circular mask + white border
+            resp = requests.get(avatar_url)
+            avatar = Image.open(io.BytesIO(resp.content)).resize((210, 210)).convert("RGBA")
+            mask = Image.new("L", (210, 210), 0)
+            ImageDraw.Draw(mask).ellipse((0, 0, 210, 210), fill=255)
+            border = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
+            ImageDraw.Draw(border).ellipse((0, 0, 210, 210), outline="white", width=6)
+            avatar.putalpha(mask)
+            laid = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
+            laid.paste(avatar, (0, 0), avatar)
+            avatar_with_border = Image.alpha_composite(border, laid)
+            avatar_y = header_y + 10
+            tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
 
-        # MÁSCARA E BORDA CIRCULAR
-        mask = Image.new("L", (210, 210), 0)
-        mask_draw = ImageDraw.Draw(mask)
-        mask_draw.ellipse((0, 0, 210, 210), fill=255)
+            # 8) Fonts for ID, name, points, stats
+            id_font     = ImageFont.truetype("fonts/Freshman.ttf", 18)
+            name_font   = ImageFont.truetype("fonts/American Captain.ttf", 36)
+            points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
+            stats_font  = ImageFont.truetype("fonts/American Captain.ttf", 24)
 
-        border = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
-        border_draw = ImageDraw.Draw(border)
-        border_draw.ellipse((0, 0, 210, 210), outline="white", width=6)
-        avatar_with_alpha = Image.new("RGBA", (210, 210), (0, 0, 0, 0))
-        avatar.putalpha(mask)
-        avatar_with_alpha.paste(avatar, (0, 0), avatar)
-        avatar_with_border = Image.alpha_composite(border, avatar_with_alpha)
+            # 9) Draw ID (#001) centered below avatar
+            id_text = f"#{blader_id}"
+            bbox = id_font.getbbox(id_text)
+            x = (tag_img.width - (bbox[2]-bbox[0])) // 2
+            y = avatar_y + 210 + 5
+            draw.text((x, y), id_text, font=id_font, fill="white")
 
-        avatar_y = header_y + 10
-        tag_img.paste(avatar_with_border, (45, avatar_y), avatar_with_border)
+            # 10) Draw name
+            name_y = y + (bbox[3]-bbox[1]) + 5
+            bbox = name_font.getbbox(name)
+            x = (tag_img.width - (bbox[2]-bbox[0])) // 2
+            draw.text((x, name_y), name, font=name_font, fill="white")
 
-        # FONTES
-        title_font = ImageFont.truetype("fonts/American Captain.ttf", 36)
-        points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
-        id_font = ImageFont.truetype("fonts/Freshman.ttf", 18)
-        stats_font = ImageFont.truetype("fonts/American Captain.ttf", 24)
+            # 11) Draw points (integer)
+            pts_text = f"{int(points)} pontos"
+            pts_y = name_y + (bbox[3]-bbox[1]) + 10
+            bbox = points_font.getbbox(pts_text)
+            x = (tag_img.width - (bbox[2]-bbox[0])) // 2
+            draw.text((x, pts_y), pts_text, font=points_font, fill="white")
 
-        # ID CENTRALIZADO ABAIXO DO AVATAR
-        id_text = f"#{blader_id}"
-        id_bbox = id_font.getbbox(id_text)
-        id_w = id_bbox[2] - id_bbox[0]
-        id_h = id_bbox[3] - id_bbox[1]
-        id_x = (tag_img.width - id_w) // 2
-        id_y = avatar_y + 210 + 15
-        draw.text((id_x, id_y), id_text, font=id_font, fill="white")
+            # 12) Draw stats (wins/losses/ratio)
+            wins, losses = int(row.get("wins", 0)), int(row.get("losses", 0))
+            ratio = float(row.get("win_loss_ratio", 0))
+            stats = [f"Vitórias: {wins}", f"Derrotas: {losses}", f"V/D: {ratio:.2f}"]
+            stats_y = pts_y + (bbox[3]-bbox[1]) + 15
+            for line in stats:
+                bbox = stats_font.getbbox(line)
+                x = (tag_img.width - (bbox[2]-bbox[0])) // 2
+                draw.text((x, stats_y), line, font=stats_font, fill="white")
+                stats_y += (bbox[3]-bbox[1]) + 5
 
-        # NOME CENTRALIZADO
-        name_y = id_y + id_h + 20
-        name_bbox = title_font.getbbox(name)
-        name_w = name_bbox[2] - name_bbox[0]
-        name_h = name_bbox[3] - name_bbox[1]
-        name_x = (tag_img.width - name_w) // 2
-        draw.text((name_x, name_y), name, font=title_font, fill="white")
+            # 13) Upscale 2x for higher resolution download
+            high_res = tag_img.resize((600, 1000), resample=Image.LANCZOS)
 
-        # PONTOS CENTRALIZADOS
-        points_text = f"{int(points)} pontos"
-        points_y = name_y + name_h + 20
-        points_bbox = points_font.getbbox(points_text)
-        points_w = points_bbox[2] - points_bbox[0]
-        points_x = (tag_img.width - points_w) // 2
-        draw.text((points_x, points_y), points_text, font=points_font, fill="white")
-
-        # ESTATÍSTICAS (V/D/R)
-        wins = int(row.get("wins", 0))
-        losses = int(row.get("losses", 0))
-        ratio = float(row.get("win_loss_ratio", 0))
-        ratio_str = f"{ratio:.2f}"
-
-        stats_y = points_y + 50  # espaçamento abaixo dos pontos
-        stat_lines = [
-            f"Vitorias: {wins}",
-            f"Derrotas: {losses}",
-            f"V/D: {ratio_str}"
-        ]
-
-        for line in stat_lines:
-            line_bbox = stats_font.getbbox(line)
-            line_w = line_bbox[2] - line_bbox[0]
-            line_x = (tag_img.width - line_w) // 2
-            draw.text((line_x, stats_y), line, font=stats_font, fill="white")
-            stats_y += 25  # espaçamento entre linhas
-
-        # MOSTRAR
-        st.image(tag_img, caption=f"Tag de {name}")
-        high_res_tag = tag_img.resize((600, 1000), resample=Image.LANCZOS)
-
-        # BOTÃO DOWNLOAD
-        buf = io.BytesIO()
-        high_res_tag.save(buf, format="PNG")
-        st.download_button(
-            label="📥 Baixar Tag",
-            data=buf.getvalue(),
-            file_name=f"{name}_tag.png",
-            mime="image/png"
-        )
+            # 14) Display and download
+            st.image(high_res, caption=f"Tag de {name}")
+            buf = io.BytesIO()
+            high_res.save(buf, format="PNG")
+            st.download_button(
+                "📥 Baixar Tag",
+                data=buf.getvalue(),
+                file_name=f"{blader_id}_{name}_tag.png",
+                mime="image/png"
+            )
