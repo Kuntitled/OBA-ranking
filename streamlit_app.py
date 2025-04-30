@@ -602,7 +602,7 @@ with tabFive:
     Todos os duelos oficiais, assim como suas **vitórias e derrotas**, serão **registrados no Ranking Oficial** e farão parte do **histórico oficial de partidas** da organização.
 
     7. 📜 **Consulta de Regras**  
-    As regras utilizadas no duelo deverão ser aquelas disponíveis na aba **“📜 Regras Oficiais”**.
+    As regras utilizadas no duelo deverão ser aquelas disponíveis na aba **“✅ Regras Oficiais”**.
     """)
 
 with tabSix:  # ABA GERADOR BLADER TAG
