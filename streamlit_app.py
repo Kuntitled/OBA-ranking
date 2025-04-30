@@ -458,6 +458,123 @@ with tabFour: # ABA REGRAS
     - **Não aceitar a decisão do juiz pode levar à desclassificação.**
     """)
 
+    st.markdown("""
+    ## Regulamento de Equipamentos
+
+    ## Regras Gerais
+
+    - Apenas produtos oficiais Beyblade X fabricados pela **Takara Tomy** e **Hasbro** podem ser utilizados.
+    - Produtos de gerações anteriores do Beyblade não são permitidos.
+    - Somente os seguintes estádios podem ser usados:
+    - Xtreme Stadium da Takara Tomy
+    - Xtreme BeyStadium da Hasbro
+    - Equipamentos trincados ou quebrados (incluindo peças dos Beys, lançadores e estádios) não podem ser usados.
+    - Estádios com rachaduras finas podem ser reparados com fita adesiva, desde que:
+    - A fita seja aplicada na parte inferior
+    - A superfície resultante seja lisa e imperceptível
+    - O reparo não forneça suporte estrutural significativo
+    - É proibido o uso de equipamentos além do seu design original (ex: girar um Bey na direção oposta).
+    - Modificações não previstas explicitamente nas regras são proibidas.
+    - Peças não podem ser intencionalmente modificadas para desempenho além das especificações originais.
+    - “Especificações originais” significam o desempenho esperado de um produto novo.
+    - Componentes substituíveis de forma não destrutiva podem ser trocados por peças idênticas de outro conjunto.
+    - Qualquer modificação que cause dano ou vantagem injusta é proibida.
+
+    ## Regulamento de Beys
+
+    - Lâminas podem ser decoradas com tinta ou adesivos.
+    - A decoração não pode afetar o desempenho.
+    - Não pode ser aplicada em partes que tocam outras ao montar o Bey.
+    - Adesivos não podem sobrepor outros adesivos (exceto se pré-aplicados).
+    - Imagens ofensivas ou inapropriadas não são permitidas.
+    - Marcas pequenas para diferenciação ou alinhamento são permitidas:
+    - Lâmina: exceto nos pontos de contato e parte inferior onde a catraca se conecta.
+    - Catraca: na base, exceto onde toca a ponta.
+    - Ponta (bit): parte superior e interior do eixo.
+    - Peças desgastadas além do uso normal não podem ser usadas.
+    - O desgaste normal inclui batalhas em estádios oficiais com até 2 Beys.
+    - Contato com outras superfícies que cause desgaste invalida a peça.
+    - Desgaste extremo (ex: ponta afiada ficar completamente plana) é proibido.
+    - Peças de borracha podem se desgastar mais rápido, mas são permitidas se a maior parte da borracha estiver intacta.
+    - Peças com defeito de fabricação que afetam o desempenho não podem ser usadas.
+
+    ## Regulamento de Lançadores
+
+    - Qualquer tipo de winder pode ser usado com qualquer lançador tipo winder:
+    - Winders: Winder, Long Winder, Entry Winder, Dragon Winder
+    - Lançadores: Winder Launcher, Entry Launcher, Winder Launcher L, Hold Launcher
+    - Winders não podem ser modificados.
+    - Lançadores e empunhaduras podem ser decorados com tinta e adesivos.
+    - A decoração não pode afetar o desempenho.
+    - Imagens ofensivas são proibidas.
+    - Acessórios não oficiais podem ser usados desde que:
+    - Não atrapalhem o lançamento do oponente
+    - Não alterem o desempenho do lançador
+
+    ## Peças Banidas
+
+    - **Metal Needle (MN)**
+    - Motivo: pode danificar o estádio com sua ponta metálica.
+
+    # Regras Opcionais
+
+    Estas regras podem ser utilizadas pelos organizadores para personalizar torneios. Verifique as informações do torneio com antecedência.
+
+    - **Own Finish**  
+    Se um Bey sofre Xtreme ou Over Finish sem tocar no Bey oponente, conta como own finish.
+    - O blader recebe 1 ponto
+    - A batalha é reiniciada
+
+    - **Lista de Beys Bloqueados**
+    - Antes de cada fase, entregue uma lista escrita dos Beys que irá usar.
+    - Limites da lista por formato:
+        - 1on1: 1 a 3 Beys
+        - 3on3: 3 a 5 Beys
+        - WBO Deck / P3C1: 1 a 5 Beys
+    - Você só pode usar os Beys da sua lista.
+    - Não é permitido selecionar duas cópias da mesma peça para uma batalha.
+
+    - **Spin Finish fora da arena**
+    - Se o Bey sair pela área de lançamento, conta como spin finish em vez de batalha anulada.
+
+    - **Over Finish fora da arena**
+    - Se o Bey sair pela área de lançamento, conta como over finish.
+
+    - **Trocar de posição**
+    - Após cada batalha dentro de um set, os bladers trocam de posição de lançamento.
+    - Em partidas WBO deck, isso não se aplica a replays.
+
+    - **Perdedor escolhe a posição**
+    - Após cada batalha, o perdedor escolhe sua posição de lançamento.
+    - Em partidas WBO deck, isso não se aplica a replays.
+
+    - **Componentes não desmontados**
+    - Peças desmontadas além do design original (ex: abrir parafusos) não são permitidas.
+
+    - **Sem peças pintadas**
+    - Peças não podem ser pintadas ou revestidas. Pequenas marcas nas áreas permitidas ainda são válidas.
+
+    - **Desbanir MN**
+    - O bit MN (Metal Needle) é permitido.
+
+    - **Ajustar antes de apresentar (WBO Deck apenas)**
+    - Os Beys devem ser ajustados antes da apresentação ao oponente e não podem ser ajustados depois.
+
+    ## Desclassificação
+
+    Você pode ser desclassificado a critério do juiz ou organizador se:
+
+    - Quebrar regras intencionalmente
+    - Usar equipamento fora das normas
+    - Cometer muitos erros de lançamento ou lançar de forma perigosa
+    - Agir de forma desrespeitosa ou perturbadora
+
+    Se for desclassificado:
+    - Perde o confronto
+    - Perde qualquer colocação ou prêmio
+    - Pode ser suspenso de futuros eventos
+    """)
+
     st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
     st.markdown('<a href="https://worldbeyblade.org/Thread-Beyblade-X-Rules" target="_blank">🔗 Acessar regras oficias WBO</a>', unsafe_allow_html=True)
 
