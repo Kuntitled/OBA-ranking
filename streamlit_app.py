@@ -294,9 +294,7 @@ with tabFour: # ABA REGRAS
 
     ### 🔸 3 contra 3 (3on3)
     - Cada blader monta um **deck com 3 Beys**, ordenados da **esquerda para a direita** como:
-    - 1º Bey
-    - 2º Bey
-    - 3º Bey
+    - 1º Bey, 2º Bey e 3º Bey
 
     #### Regras:
     - Após cada batalha, o blader deve trocar para o próximo Bey do deck.
