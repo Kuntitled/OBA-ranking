@@ -203,7 +203,6 @@ with tabFour: # ABA REGRAS
     – É a grande abertura localizada na <strong>parte frontal central</strong> do estádio.  
     – Beys que saem por essa abertura normalmente resultam em pontos de vitória para o oponente.  
 
-    ---
 
     🔎 Um Bey é considerado dentro de uma zona assim que a <strong>maior parte de sua estrutura</strong> estiver dentro da respectiva área.
     """, unsafe_allow_html=True)
