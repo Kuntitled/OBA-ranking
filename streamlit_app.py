@@ -514,7 +514,8 @@ with tabFour: # ABA REGRAS
     ## Peças Banidas
 
     - **Metal Needle (MN)**
-    - Motivo: pode danificar o estádio com sua ponta metálica.
+    - **Wizard Rod Blade em partidas 1on1**
+    
 
     # Regras Opcionais
 
