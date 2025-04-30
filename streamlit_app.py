@@ -458,6 +458,8 @@ with tabFour: # ABA REGRAS
     - **Não aceitar a decisão do juiz pode levar à desclassificação.**
     """)
 
+    st.markdown("---")
+
     st.markdown("""
     ## Regulamento de Equipamentos
 
@@ -561,6 +563,7 @@ with tabFour: # ABA REGRAS
     - **Ajustar antes de apresentar (WBO Deck apenas)**
     - Os Beys devem ser ajustados antes da apresentação ao oponente e não podem ser ajustados depois.
 
+    ---
     ## Desclassificação
 
     Você pode ser desclassificado a critério do juiz ou organizador se:
