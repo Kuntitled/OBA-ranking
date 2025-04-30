@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
-tabOne, tabTwo, tabThree, tabFour, tabFive = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras", "🐞 Gerar Blader Tag"])
+tabOne, tabTwo, tabThree, tabFour, tabFive, tabSix = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🦈 Regras Especiais", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -279,9 +279,12 @@ with tabFour: # ABA REGRAS
 
     """)
 
-
     st.markdown("---") # DIVISOR
 
+    st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
+    st.markdown('<a href="https://worldbeyblade.org/Thread-Beyblade-X-Rules" target="_blank">🔗 Acessar regras oficias WBO</a>', unsafe_allow_html=True)
+
+with tabFive:
     st.markdown("""
     ## ⚔️ DUELO OFICIAL – OBA (Organização de Beyblade do Amazonas)
 
@@ -307,12 +310,7 @@ with tabFour: # ABA REGRAS
     As regras utilizadas no duelo deverão ser aquelas disponíveis na aba **“📜 Regras Oficiais”**.
     """)
 
-    st.markdown("---")
-    st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
-    st.markdown('<a href="https://worldbeyblade.org/Thread-Beyblade-X-Rules" target="_blank">🔗 Acessar regras oficias WBO</a>', unsafe_allow_html=True)
-
-
-with tabFive:  # ABA GERADOR BLADER TAG
+with tabSix:  # ABA GERADOR BLADER TAG
     st.subheader("🎖️ Gerador de Blader Tag")
 
     # INPUT DO ID BLADER
