@@ -208,6 +208,7 @@ with tabFour: # ABA REGRAS
     🔎 Um Bey é considerado dentro de uma zona assim que a <strong>maior parte de sua estrutura</strong> estiver dentro da respectiva área.
     """, unsafe_allow_html=True)
 
+    st.markdown("---") # DIVISOR
 
     st.markdown("""
     ## ⚔️ DUELO OFICIAL – OBA (Organização de Beyblade do Amazonas)
