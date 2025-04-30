@@ -342,12 +342,12 @@ with tabFour: # ABA REGRAS
     st.markdown("### 🚀 Lançamento")
     st.markdown("""
     - Certifique-se de que seu Bey está corretamente montado, apertando o catraco e pressionando o bit.  
-    - Prenda seu Bey no lançador e segure-o acima ou dentro da área de lançamento (figura 3).  
+    - Prenda seu Bey no lançador e segure-o acima ou dentro da área de lançamento.  
     - Mantenha o bit do seu Bey voltado para baixo enquanto estiver preso ao lançador. Não incline o lançador para que o bit fique de lado ou para cima.  
     - O juiz anunciará “prontos, preparar” para informar que a contagem regressiva para o lançamento está prestes a começar. Se você não estiver pronto, avise o juiz imediatamente.  
-    - Durante a contagem, o juiz dirá: “três, dois, um, atire!” ou “três, dois, um, let it rip!”  
-    - Comece a puxar a corda/lança assim que a palavra “atire”/“rip” for dita.  
-    - Lance seu Bey a no máximo 20cm do corpo do estádio (figura 4).  
+    - Durante a contagem, o juiz dirá: “três, dois, um, go shoot!” ou “três, dois, um, let it rip!”  
+    - Comece a puxar a corda/lança assim que a palavra “shoot”/“rip” for dita.  
+    - Lance seu Bey a no máximo 20cm do corpo do estádio.  
     - Não obstrua o lançamento do oponente.  
     - Não tente atingir o Bey do oponente antes que ele toque o corpo do estádio.  
     - Não corra, pule ou faça lançamentos de forma perigosa.  
@@ -359,7 +359,7 @@ with tabFour: # ABA REGRAS
     st.markdown("""
     Um blader comete erro de lançamento quando:
 
-    - Começa a puxar a corda antes ou depois da palavra “atire”/“rip”  
+    - Começa a puxar a corda antes ou depois da palavra “shoot”/“rip”  
     - Lança de mais de 20cm de distância do estádio  
     - Lança de fora da área designada de lançamento  
     - Lança seu Bey para fora do estádio  
