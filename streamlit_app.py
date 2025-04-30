@@ -207,6 +207,79 @@ with tabFour: # ABA REGRAS
     🔎 Um Bey é considerado dentro de uma zona assim que a <strong>maior parte de sua estrutura</strong> estiver dentro da respectiva área.
     """, unsafe_allow_html=True)
 
+    st.markdown("""
+    ## 🏆 Vencendo uma Partida
+
+    Em torneios, os jogos de Beyblade são disputados em **partidas**, compostas por **batalhas**, **pontos** e **sets**:
+
+    - **Batalha:** Quando dois Beys se enfrentam e um vencedor é definido. O resultado concede pontos.
+    - **Pontos:** São concedidos com base na forma como a batalha foi vencida (ver seção de *tipos de finalizações*).
+    - **Set:** Vencido quando um blader atinge o número de pontos exigido.
+
+    **Pontuação necessária para vencer um set:**
+    - Fase inicial: **4 pontos** (padrão)
+    - Fase final: **7 pontos** (padrão)
+
+    **Formato da partida:**
+    - **Melhor de 1 (Bo1):** vence quem ganhar 1 set
+    - **Melhor de 3 (Bo3):** vence quem ganhar 2 sets
+
+    ---
+
+    ## 🧩 Fases da Partida
+
+    ### Início da Partida
+    A partida começa assim que ambos os bladers e o juiz estiverem presentes no estádio designado.
+
+    - A partir desse momento, **não é permitido receber ajuda ou conselhos de terceiros**.
+    - Exceções podem ser feitas a critério do juiz (ex.: bladers com necessidades especiais).
+    - Não é permitido **sair do estádio** sem autorização do juiz.
+
+    ---
+
+    ### 🌀 Posição de Lançamento
+    - Um dos bladers escolhe o lado de lançamento (esquerdo ou direito).
+    - Antes do primeiro set, essa escolha é definida por sorteio justo (ex.: par ou ímpar, cara ou coroa).
+    - Nos sets seguintes, **quem perdeu o set anterior escolhe o lado de lançamento**.
+    - O outro blader deve assumir o lado restante.
+
+    ---
+
+    ### 🧱 Escolha do Bey
+    - Bladers escolhem seus Beys **em segredo** (ex.: virados de costas para o estádio).
+    - A escolha deve ser feita em **até 1 minuto**. Após esse tempo, o juiz pode exigir decisão imediata.
+    - É proibido tentar **obter informações sobre o Bey do oponente**.
+    - Após a escolha, os Beys são **entregues ao juiz para inspeção** (inclusive desmontagem, se necessário).
+    - A escolha do Bey ou deck é **definitiva para a partida**.
+    - Entre os sets, os Beys **não são reinspecionados**, mas a ordem do deck pode ser alterada.
+
+    ---
+
+    ### 📣 Apresentação do Bey
+    - Cada blader deve **mostrar o topo e a base do seu Bey ao oponente**, com todas as peças visíveis.
+    - Após essa apresentação, os bladers podem **ajustar seus Beys**:
+    - Alterar a posição de peças (ex.: girar o ratchet ou bit)
+    - Mudar o modo de peças que possuem essa funcionalidade
+    - Mesmo que o ajuste exija desmontagem
+    - O blader deve **avisar o oponente e o juiz** antes de ajustar o Bey.
+    - Após o ajuste, o Bey deve ser apresentado novamente.
+    - **É proibido tocar no Bey do oponente.**
+
+    ---
+
+    ### ⚔️ Batalha
+    - A batalha ocorre conforme as regras até que um blader atinja a pontuação necessária para vencer o set.
+    - Se o Bey for trocado entre batalhas (ex.: formato 3 contra 3), o processo de **apresentação do Bey deve ser repetido**.
+
+    ---
+
+    ### ✅ Resultado da Partida
+    - Quando um blader vence o número de sets necessário, o juiz confirma e encerra a partida.
+    - Caso nenhum tenha vencido ainda, a partida continua com o próximo set, reiniciando a escolha de posição.
+
+    """)
+
+
     st.markdown("---") # DIVISOR
 
     st.markdown("""
