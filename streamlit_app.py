@@ -335,8 +335,128 @@ with tabFour: # ABA REGRAS
     - O Bey escolhido é então apresentado, e será usado até que haja um vencedor.
     """)
 
-
     st.markdown("---") # DIVISOR
+
+    st.markdown("## 🧨 Regras da Batalha")
+
+    st.markdown("### 🚀 Lançamento")
+    st.markdown("""
+    - Certifique-se de que seu Bey está corretamente montado, apertando o catraco e pressionando o bit.  
+    - Prenda seu Bey no lançador e segure-o acima ou dentro da área de lançamento (figura 3).  
+    - Mantenha o bit do seu Bey voltado para baixo enquanto estiver preso ao lançador. Não incline o lançador para que o bit fique de lado ou para cima.  
+    - O juiz anunciará “prontos, preparar” para informar que a contagem regressiva para o lançamento está prestes a começar. Se você não estiver pronto, avise o juiz imediatamente.  
+    - Durante a contagem, o juiz dirá: “três, dois, um, atire!” ou “três, dois, um, let it rip!”  
+    - Comece a puxar a corda/lança assim que a palavra “atire”/“rip” for dita.  
+    - Lance seu Bey a no máximo 20cm do corpo do estádio (figura 4).  
+    - Não obstrua o lançamento do oponente.  
+    - Não tente atingir o Bey do oponente antes que ele toque o corpo do estádio.  
+    - Não corra, pule ou faça lançamentos de forma perigosa.  
+    - Não toque ou mova o estádio ou sua base durante o lançamento.  
+    - Após o lançamento, recue imediatamente e observe a batalha. Não se incline sobre o estádio.
+    """)
+
+    st.markdown("### ❌ Erros de Lançamento")
+    st.markdown("""
+    Um blader comete erro de lançamento quando:
+
+    - Começa a puxar a corda antes ou depois da palavra “atire”/“rip”  
+    - Lança de mais de 20cm de distância do estádio  
+    - Lança de fora da área designada de lançamento  
+    - Lança seu Bey para fora do estádio  
+    - Lança seu Bey de cabeça para baixo ou de lado  
+    - O Bey toca a cobertura do estádio antes de passar pela área de lançamento  
+    - Toca o estádio com o corpo ou o lançador (exceto a corda)
+
+    **Resultado**: o duelo é anulado.  
+    **Penalidade**: a cada 2 erros sem pontuação, o oponente ganha 1 ponto.  
+
+    Se ambos cometerem erro no mesmo lançamento, nenhum ponto é concedido.
+    """)
+
+    st.markdown("### 🔁 Solicitação de Relançamento")
+    st.markdown("""
+    Você pode pedir um relançamento se:
+
+    - O lançamento do oponente obstruiu o seu  
+    - Foi atingido ou impedido por alguém ou algo  
+    - Seu lançamento foi fraco devido a problema técnico com o lançador  
+
+    **Procedimento**:
+
+    - Diga “relançar” imediatamente após lançar.  
+    - Se aprovado, a batalha é anulada.  
+    - Se o problema foi técnico, use um lançador diferente pelo restante da partida.  
+    - Se não tiver outro, pode emprestar de outro blader.  
+    - Só é permitido um relançamento técnico por batalha.  
+    - O juiz pode testar seu lançador.  
+    - Apenas o blader afetado pode solicitar; o juiz ou oponente não podem sugerir.
+    """)
+
+    st.markdown("### ⚔️ Início e Fim da Batalha")
+    st.markdown("""
+    - A batalha começa quando ambos os Beys tocam o estádio.  
+    - Um Bey está **fora de jogo** quando:
+
+    - Para de girar (velocidade de rotação = 0)  
+    - Se desmonta (explosão)  
+    - Sai do estádio e não pode voltar  
+
+    A batalha termina quando:
+
+    - Só um Bey está girando, ou  
+    - Todos os Beys estão fora de jogo  
+
+    ⚠️ **Não toque no estádio ou Bey até o juiz confirmar o resultado**. Caso contrário, você pode perder a rodada.
+    """)
+
+    st.markdown("### 🏆 Pontuação por Finalizações")
+    st.markdown("""
+    | Tipo de Finalização | Pontos | Condições |
+    |---------------------|--------|-----------|
+    | **Xtreme Finish**   | 3 pts  | Oponente entra na zona Xtreme e fica fora de jogo |
+    | **Over Finish**     | 2 pts  | Oponente entra na zona Over e fica fora de jogo |
+    | **Burst Finish**    | 2 pts  | Oponente se desmonta |
+    | **Spin Finish**     | 1 pt   | Oponente para de girar |
+
+    - Uma finalização é **iniciada** quando o oponente sai ou fica fora de jogo.  
+    - A vitória só é confirmada quando a finalização é **pontuada**.  
+    - Se o oponente voltar à zona de batalha, a finalização é **anulada**.  
+    - Se ambos pontuarem, vence quem **iniciou** primeiro.  
+    - Se iniciarem ao mesmo tempo e pontuarem, a batalha é **empate**.  
+    - Se ninguém pontuar, também é empate.
+    """)
+
+    st.markdown("### 🔄 Batalhas Anuladas e Repetidas")
+    st.markdown("""
+    A batalha é **anulada** se:
+
+    - Terminar em empate  
+    - Ocorreu erro de lançamento  
+    - Os Beys se tocam antes de ambos tocarem o estádio  
+    - Um Bey explode antes de tocar o estádio  
+    - Um Bey sai sem passar pelas zonas Xtreme/Over  
+    - O juiz determinar que houve obstrução  
+    - Foi solicitado e aprovado relançamento  
+    - Alguma peça do Bey quebrou  
+    - O estádio quebrou ou parte dele se soltou  
+    - Qualquer outra interferência relevante  
+
+    Na repetição:
+
+    - Usam-se os mesmos Beys e lançadores, exceto em caso de quebra  
+    - Bits podem ser girados e catracos apertados, mas não é permitido desmontar o Bey  
+    - Se não puder substituir a peça quebrada, ambos retornam à fase de seleção, mantendo a pontuação
+    """)
+
+    st.markdown("### ⚖️ Decisões do Juiz")
+    st.markdown("""
+    - Qualquer dúvida deve ser reportada ao juiz imediatamente.  
+    - Após o início da próxima batalha, o resultado anterior não será alterado.  
+    - O juiz pode revisar vídeos da batalha se quiser.  
+    - Em alguns torneios, há juiz principal para apelação.  
+    - A decisão final é sempre do(s) juiz(es).  
+    - **Não aceitar a decisão do juiz pode levar à desclassificação.**
+    """)
 
     st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
     st.markdown('<a href="https://worldbeyblade.org/Thread-Beyblade-X-Rules" target="_blank">🔗 Acessar regras oficias WBO</a>', unsafe_allow_html=True)
