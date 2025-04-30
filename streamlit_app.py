@@ -142,6 +142,32 @@ with tabThree: # ABA EVENTOS
 with tabFour: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
     st.write("------regras vão aqui------")
+    st.markdown("---")
+    st.markdown("""
+    ## ⚔️ DUELO OFICIAL – OBA (Organização de Beyblade do Amazonas)
+
+    1. 🔊 **Anúncio do Duelo**  
+    Todo duelo oficial deve ser **anunciado verbalmente**, seja **presencialmente** ou por **mensagem no grupo oficial**, por um dos desafiantes.
+
+    2. ✅ **Aceitação do Adversário**  
+    O adversário deve **aceitar o desafio verbalmente**, também de forma presencial ou no grupo oficial.
+
+    3. 📋 **Definição de Regras**  
+    A dupla de duelistas deve **entrar em consenso** sobre as regras que serão utilizadas. Todas as **regras oficiais disponíveis** podem ser escolhidas para compor o formato do duelo.
+
+    4. 🧑‍⚖️ **Comunicação com a Organização**  
+    Após o acordo, o duelo precisa ser **comunicado a um Representante Oficial da OBA**, que avaliará e aprovará a solicitação.
+
+    5. 📅 **Agendamento**  
+    Com o duelo aprovado por um Oficial, será marcado um **local e horário** para sua realização.
+
+    6. 🏆 **Registro Oficial**  
+    Todos os duelos oficiais, assim como suas **vitórias e derrotas**, serão **registrados no Ranking Oficial** e farão parte do **histórico oficial de partidas** da organização.
+
+    7. 📜 **Consulta de Regras**  
+    As regras utilizadas no duelo deverão ser aquelas disponíveis na aba **“📜 Regras Oficiais”**.
+    """)
+
 
 with tabFive:  # ABA GERADOR BLADER TAG
     st.subheader("🎖️ Gerador de Blader Tag")
