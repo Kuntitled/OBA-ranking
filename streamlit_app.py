@@ -576,6 +576,8 @@ with tabFour: # ABA REGRAS
     - Pode ser suspenso de futuros eventos
     """)
 
+    st.markdown("---")
+
     st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
     st.markdown('<a href="https://worldbeyblade.org/Thread-Beyblade-X-Rules" target="_blank">🔗 Acessar regras oficias WBO</a>', unsafe_allow_html=True)
 
