@@ -141,7 +141,40 @@ with tabThree: # ABA EVENTOS
 
 with tabFour: # ABA REGRAS
     st.title("REGRAS OFICIAIS")
-    st.write("------regras vão aqui------")
+    st.markdown("""
+    ## ⚙️ Componentes de Jogo — Regras Oficiais OBA
+
+    ### 🌀 Beyblade (Bey)  
+    O <strong>Bey</strong> (ou <em>Beyblade</em>) é o pião utilizado nas batalhas.  
+    • Cada Blader deve possuir <strong>pelo menos um Bey completo</strong> para participar de uma batalha.  
+    • Um Bey completo é composto por: <strong>Blade</strong>, <strong>Ratchet</strong> e <strong>Bit</strong>.  
+    • No sistema CX, o <strong>Blade</strong> deve conter as <strong>três partes obrigatórias</strong>:  
+     ◦ <em>Lock Chip</em>  
+     ◦ <em>Lâmina Principal (Main Blade)</em>  
+     ◦ <em>Lâmina Auxiliar (Assist Blade)</em>  
+
+    ---
+
+    ### 📦 Deck  
+    Um <em>deck</em> é um conjunto de <strong>3 Beys</strong>, exigido em certos formatos de partida.  
+    • Cada deck pode conter <strong>apenas uma cópia de cada peça</strong>, com exceção dos <em>Lock Chips</em>, que podem ser repetidos.  
+    • Peças com <strong>o mesmo nome</strong> são consideradas a mesma peça, mesmo com variações regionais no nome.  
+     ◦ Ex: <em>Phoenix Wing</em> e <em>Soar Phoenix</em> são tratadas como a mesma peça.  
+    • Peças com <strong>design diferente</strong>, mas nomes distintos, são consideradas <strong>peças únicas</strong>.  
+     ◦ Ex: <em>Roar Tyranno</em> ≠ <em>Soar Phoenix</em>.  
+    • Variações de tipo com o mesmo nome (ex: <em>Lightning L-Drago</em> tipo “upper” e tipo “rapid-hit”) são consideradas a <strong>mesma peça</strong>.  
+    • <strong>Não é permitido trocar peças entre os Beys do deck durante uma partida.</strong>
+
+    ---
+
+    ### 🚀 Lançador (Launcher)  
+    O lançador é o dispositivo utilizado para lançar o Bey na arena.  
+    • Existem dois tipos:  
+     ◦ <strong>String Launcher</strong> (com mecanismo interno de corda)  
+     ◦ <strong>Winder Launcher</strong> (com corda manual externa)  
+    • <strong>Qualquer acessório conectado ao lançador</strong> é considerado parte oficial do lançador e está sujeito às mesmas regras.
+    """, unsafe_allow_html=True)
+
     st.markdown("---")
     st.markdown("""
     ## ⚔️ DUELO OFICIAL – OBA (Organização de Beyblade do Amazonas)
