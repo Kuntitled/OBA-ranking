@@ -516,7 +516,7 @@ with tabFour: # ABA REGRAS
     - **Metal Needle (MN)**
     - **Wizard Rod Blade em partidas 1on1**
     
-
+    ---
     # Regras Opcionais
 
     Estas regras podem ser utilizadas pelos organizadores para personalizar torneios. Verifique as informações do torneio com antecedência.
