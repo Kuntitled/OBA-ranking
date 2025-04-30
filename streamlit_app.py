@@ -234,6 +234,10 @@ with tabFour: # ABA REGRAS
     As regras utilizadas no duelo deverão ser aquelas disponíveis na aba **“📜 Regras Oficiais”**.
     """)
 
+    st.markdown("---")
+    st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
+    st.markdown('<a href="https://worldbeyblade.org/Thread-Beyblade-X-Rules" target="_blank">🔗 Acessar regras oficias WBO</a>', unsafe_allow_html=True)
+
 
 with tabFive:  # ABA GERADOR BLADER TAG
     st.subheader("🎖️ Gerador de Blader Tag")
