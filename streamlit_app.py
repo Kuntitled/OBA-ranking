@@ -279,6 +279,63 @@ with tabFour: # ABA REGRAS
 
     """)
 
+    st.markdown("---")
+
+    st.markdown("""
+    ## 🎮 Tipos de Partida
+
+    ---
+
+    ### 🔹 1 contra 1 (1on1)
+    - Cada blader seleciona **um único Bey**.
+    - A partida continua até que seja determinado um vencedor.
+
+    ---
+
+    ### 🔸 3 contra 3 (3on3)
+    - Cada blader monta um **deck com 3 Beys**, ordenados da **esquerda para a direita** como:
+    - 1º Bey
+    - 2º Bey
+    - 3º Bey
+
+    #### Regras:
+    - Após cada batalha, o blader deve trocar para o próximo Bey do deck.
+    - Após utilizar o 3º Bey, se não houver vencedor:
+    - Os bladers podem **reordenar seu deck** antes de voltar ao 1º Bey.
+    - O deck deve ser armazenado de forma que:
+    - **Oculte seu conteúdo**;
+    - **Mantenha a ordem dos Beys** (uso de *deck case* oficial é recomendado).
+    - A ordem dos Beys **só pode ser alterada após a batalha com o 3º Bey**.
+
+    ---
+
+    ### 🟣 Deck WBO
+    - Cada blader usa um **deck com até 3 Beys**.
+    - O **perdedor de cada batalha** decide entre:
+
+    - **🔁 Replay**: ambos repetem a batalha com o **mesmo Bey e lançador** (sem ajustes).
+    - **🔄 Switch**: ambos podem trocar de Bey, com o **vencedor apresentando primeiro**.
+
+    #### Fases:
+    1. Na primeira apresentação, os dois jogadores mostram **todo o deck**.
+    2. Em seguida, cada blader escolhe **em segredo** qual Bey usará na primeira batalha.
+    3. Após cada batalha:
+    - Se replay for escolhido, a batalha é repetida sem mudar os pontos anteriores.
+    - Se switch for escolhido:
+        - O vencedor apresenta seu novo Bey primeiro.
+        - O perdedor então escolhe e apresenta o seu.
+
+    ---
+
+    ### 🔺 Pick 3 Choose 1 (P3C1)
+    - Cada blader monta um **deck com até 3 Beys**.
+    - Durante a fase de seleção:
+    - Os dois jogadores mostram **todo o deck** para o oponente e o juiz.
+    - Após isso, voltam à seleção e escolhem **em segredo** um único Bey para usar no set.
+    - O Bey escolhido é então apresentado, e será usado até que haja um vencedor.
+    """)
+
+
     st.markdown("---") # DIVISOR
 
     st.write("Regras adaptadas e traduzidas da página oficial de regras da WBO (World Beyblade Organization)")
