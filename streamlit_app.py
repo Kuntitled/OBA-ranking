@@ -175,7 +175,40 @@ with tabFour: # ABA REGRAS
     • <strong>Qualquer acessório conectado ao lançador</strong> é considerado parte oficial do lançador e está sujeito às mesmas regras.
     """, unsafe_allow_html=True)
 
-    st.markdown("---")
+    st.markdown("---") # DIVISOR
+
+    st.markdown("""
+    ## 🏟️ Estádio — Regras Oficiais OBA
+
+    As batalhas acontecem dentro do <strong>estádio</strong>, que é composto por duas partes principais:  
+
+    • <strong>Tampa do Estádio (Stadium Cover)</strong>: inclui a área de lançamento — uma abertura circular por onde os Beys são lançados.  
+    • <strong>Corpo do Estádio (Stadium Body)</strong>: é a superfície onde os Beys batalham.  
+
+    ---
+
+    ### ⚔️ Zonas do Estádio  
+
+    O espaço interno do estádio (entre a tampa e o corpo) é dividido em três zonas que influenciam diretamente a batalha:
+
+    🔵 <strong>Zona de Batalha (Battle Zone)</strong>  
+    – Abrange <em>toda a área interna</em> do estádio, <strong>exceto</strong> as zonas Over e Xtreme.  
+    – É o espaço principal onde os Beys giram e se enfrentam.  
+
+    🕳️ <strong>Zona Over (Over Zone)</strong>  
+    – São dois bolsões localizados nos <strong>cantos esquerdo e direito da frente</strong> do estádio.  
+    – Um Bey que cai aqui pode ser considerado fora de jogo, dependendo das regras do formato.  
+
+    🚨 <strong>Zona Xtreme (Xtreme Zone)</strong>  
+    – É a grande abertura localizada na <strong>parte frontal central</strong> do estádio.  
+    – Beys que saem por essa abertura normalmente resultam em pontos de vitória para o oponente.  
+
+    ---
+
+    🔎 Um Bey é considerado dentro de uma zona assim que a <strong>maior parte de sua estrutura</strong> estiver dentro da respectiva área.
+    """, unsafe_allow_html=True)
+
+
     st.markdown("""
     ## ⚔️ DUELO OFICIAL – OBA (Organização de Beyblade do Amazonas)
 
