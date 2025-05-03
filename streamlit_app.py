@@ -81,7 +81,7 @@ with tabOne:
 with tabTwo: # ABA TABELA COMPLETA
     df["blader_id"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
     st.dataframe(
-    df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio"]]
+    df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio", "duels", "duel_win", "duel_loss", "duel_win_loss_ratio"]]
     .rename(columns={
         "blader_id": "ID",
         "blader": "Nome",
@@ -89,7 +89,11 @@ with tabTwo: # ABA TABELA COMPLETA
         "matches": "Partidas",
         "wins": "Vitórias",
         "losses": "Derrotas",
-        "win_loss_ratio": "Taxa V/D"
+        "win_loss_ratio": "Taxa V/D",
+        "duels":"Duelos",
+        "duel_win":"Duelos: Vitórias",
+        "duel_loss":"Duelos: Derrotas",
+        "duel_win_loss_ratio":"Duelos: Taxa V/D"
     }),
     use_container_width=True
 )
