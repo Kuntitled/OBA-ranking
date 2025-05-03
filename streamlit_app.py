@@ -83,8 +83,13 @@ with tabOne:
 
 with tabTwo: # ABA TABELA COMPLETA
     df["blader_id"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
+
+     # porcentagem
+    df["duel_win_loss_percentage_fmt"] = (df["duel_win_loss_percentage"] * 100).round(2).astype(str) + "%"
+
+
     st.dataframe(
-    df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio", "duels", "duel_win", "duel_loss", "duel_win_loss_percentage"]]
+    df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio", "duels", "duel_win", "duel_loss", "duel_win_loss_percentage_fmt"]]
     .rename(columns={
         "blader_id": "ID",
         "blader": "Nome",
@@ -96,7 +101,7 @@ with tabTwo: # ABA TABELA COMPLETA
         "duels":"Duelos",
         "duel_win":"Duelos: Vitórias",
         "duel_loss":"Duelos: Derrotas",
-        "duel_win_loss_percentage":"Duelos: Porcentagem de Vitórias"
+        "duel_win_loss_percentage_fmt":"Duelos: Porcentagem de Vitórias"
     }),
     use_container_width=True
 )
