@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
-tabOne, tabTwo, tabThree, tabFour, tabFive, tabSix = st.tabs(["🏆 Top 10", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🦈 Regras Especiais", "🐞 Gerar Blader Tag"])
+tabOne, tabDuels, tabTwo, tabThree, tabFour, tabFive, tabSix = st.tabs(["🏆 Top 10", "Top 10 Duelistas", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🦈 Regras Especiais", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -78,10 +78,13 @@ with tabOne:
         unsafe_allow_html=True
     )
 
+# with tabDuels:
+#     #code here
+
 with tabTwo: # ABA TABELA COMPLETA
     df["blader_id"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
     st.dataframe(
-    df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio", "duels", "duel_win", "duel_loss", "duel_win_loss_ratio"]]
+    df[["blader_id", "blader", "points", "matches", "wins", "losses", "win_loss_ratio", "duels", "duel_win", "duel_loss", "duel_win_loss_percentage"]]
     .rename(columns={
         "blader_id": "ID",
         "blader": "Nome",
@@ -93,7 +96,7 @@ with tabTwo: # ABA TABELA COMPLETA
         "duels":"Duelos",
         "duel_win":"Duelos: Vitórias",
         "duel_loss":"Duelos: Derrotas",
-        "duel_win_loss_ratio":"Duelos: Taxa V/D"
+        "duel_win_loss_percentage":"Duelos: Porcentagem de Vitórias"
     }),
     use_container_width=True
 )
