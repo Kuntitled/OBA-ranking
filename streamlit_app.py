@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
-tabOne, tabDuels, tabTwo, tabThree, tabFour, tabFive, tabSix = st.tabs(["🏆 Top 10", "Top 10 Duelistas", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🦈 Regras Especiais", "🐞 Gerar Blader Tag"])
+tabOne, tabDuels, tabTwo, tabThree, tabFour, tabFive, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🦈 Regras Especiais", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -103,7 +103,7 @@ with tabDuels:
                 )
     render_leaderboard("🏆 Top 10 por Porcentagem de Vitórias em Duelos", top_win_rate, "duel_win_loss_percentage", percentage=True)
     render_leaderboard("🔥 Top 10 por Número de Vitórias em Duelos", top_duel_wins, "duel_win")
-    
+
 with tabTwo: # ABA TABELA COMPLETA
     df["blader_id"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
 
