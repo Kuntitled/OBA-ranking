@@ -78,9 +78,32 @@ with tabOne:
         unsafe_allow_html=True
     )
 
-# with tabDuels:
-#     #code here
+with tabDuels:
+     #code here
+    min_duels = 5
+    top_win_rate = df[df["duels"] >= min_duels].copy()
+    top_win_rate["duel_win_loss_percentage"] = (top_win_rate["duel_win_loss_percentage"] * 100).round(1)
+    top_win_rate = top_win_rate.sort_values(by="duel_win_loss_percentage", ascending=False).head(10)
 
+    top_duel_wins = df.sort_values(by="duel_win", ascending=False).head(10)
+
+    def render_leaderboard(title, data, metric_col, percentage=False):
+        st.markdown(f"## {title}")
+        for idx, row in data.iterrows():
+            cols = st.columns([1, 4])
+            with cols[0]:
+                st.image(row["blader_avatar"], width=60)
+            with cols[1]:
+                name_style = "font-size:24px;" if data.index.get_loc(idx) < 3 else "font-size:16px;"
+                metric = f'{row[metric_col]:.1f}%' if percentage else int(row[metric_col])
+                st.markdown(
+                    f"<div style='{name_style} font-weight:bold'>{row['blader_id']} - {row['blader']}</div>"
+                    f"<div style='color:gray'>Vitórias: {metric}</div>",
+                    unsafe_allow_html=True
+                )
+    render_leaderboard("🏆 Top 10 por Porcentagem de Vitórias em Duelos", top_win_rate, "duel_win_loss_percentage", percentage=True)
+    render_leaderboard("🔥 Top 10 por Número de Vitórias em Duelos", top_duel_wins, "duel_win")
+    
 with tabTwo: # ABA TABELA COMPLETA
     df["blader_id"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
 
