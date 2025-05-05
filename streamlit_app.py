@@ -18,6 +18,7 @@ df = df.sort_values("points", ascending=False).reset_index(drop=True)
 top3 = df.head(3)
 
 today = str(date.today())
+
 with tabOne:
     # TITLE
     st.title("Organização de Beyblade do Amazonas")
@@ -92,7 +93,7 @@ with tabDuels:
         for idx, row in data.iterrows():
             cols = st.columns([1, 4])
             with cols[0]:
-                st.image(row["blader_avatar"], width=60)
+                st.image(row["avatar"], width=60)
             with cols[1]:
                 name_style = "font-size:24px;" if data.index.get_loc(idx) < 3 else "font-size:16px;"
                 metric = f'{row[metric_col]:.1f}%' if percentage else int(row[metric_col])
