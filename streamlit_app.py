@@ -80,7 +80,6 @@ with tabOne:
     )
 
 with tabDuels:
-     #code here
     min_duels = 5
     top_win_rate = df[df["duels"] >= min_duels].copy()
     top_win_rate["duel_win_loss_percentage"] = (top_win_rate["duel_win_loss_percentage"] * 100).round(1)
@@ -90,16 +89,28 @@ with tabDuels:
 
     def render_leaderboard(title, data, metric_col, percentage=False):
         st.markdown(f"## {title}")
-        for idx, row in data.iterrows():
+        bg_colors = ["#FFD700", "#C0C0C0", "#CD7F32"]  # Gold, Silver, Bronze
+
+        for rank, (_, row) in enumerate(data.iterrows()):
             cols = st.columns([1, 4])
             with cols[0]:
                 st.image(row["avatar"], width=60)
             with cols[1]:
-                name_style = "font-size:24px;" if data.index.get_loc(idx) < 3 else "font-size:16px;"
+                name_size = "24px" if rank < 3 else "16px"
+                bg_style = f"background-color:{bg_colors[rank]}; padding:10px; border-radius:10px;" if rank < 3 else ""
                 metric = f'{row[metric_col]:.1f}%' if percentage else int(row[metric_col])
+
                 st.markdown(
-                    f"<div style='{name_style} font-weight:bold'>{row['blader_id']} - {row['blader']}</div>"
-                    f"<div style='color:gray'>Vitórias: {metric}</div>",
+                    f"""
+                    <div style="{bg_style}">
+                        <div style="font-size:{name_size}; font-weight:bold;">
+                            {row['blader_id']} - {row['blader']}
+                        </div>
+                        <div style="color:gray;">
+                            Vitórias: {metric}
+                        </div>
+                    </div>
+                    """,
                     unsafe_allow_html=True
                 )
     render_leaderboard("🏆 Top 10 por Porcentagem de Vitórias em Duelos", top_win_rate, "duel_win_loss_percentage", percentage=True)
