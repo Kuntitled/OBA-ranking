@@ -103,11 +103,11 @@ with tabDuels:
                 bg_style = f"background-color:{bg_colors[rank]}; padding:10px; border-radius:10px;" if rank < 3 else ""
                 metric = f'{row[metric_col]:.1f}%' if percentage else int(row[metric_col])
 
-                st.markdown(
+                st.markdown( 
                     f"""
                     <div style="{bg_style}">
                         <div style="font-size:{name_size}; font-weight:bold;">
-                            {row['blader_id']} - {row['blader']}
+                            #{int(row['blader_id']):03d} - {row['blader']}
                         </div>
                         <div style="color:gray;">
                             Vitórias: {metric}
@@ -116,6 +116,7 @@ with tabDuels:
                     """,
                     unsafe_allow_html=True
                 )
+
     render_leaderboard("🏆 Top 10 por Porcentagem de Vitórias em Duelos", top_win_rate, "duel_win_loss_percentage", percentage=True)
     render_leaderboard("🔥 Top 10 por Número de Vitórias em Duelos", top_duel_wins, "duel_win")
 
