@@ -109,7 +109,7 @@ with tabDuels:
                         <div style="font-size:{name_size}; font-weight:bold;">
                             #{int(row['blader_id']):03d} - {row['blader']}
                         </div>
-                        <div style="color:gray;">
+                        <div style="color:white;">
                             Vitórias: {metric}
                         </div>
                     </div>
