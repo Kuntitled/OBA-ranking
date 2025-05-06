@@ -89,12 +89,15 @@ with tabDuels:
 
     def render_leaderboard(title, data, metric_col, percentage=False):
         st.markdown(f"## {title}")
-        bg_colors = ["#FFD700", "#C0C0C0", "#CD7F32"]  # Gold, Silver, Bronze
+        bg_colors = ["#d4af37", "#c0c0c0", "#cd7f32"]  # Gold, Silver, Bronze
 
         for rank, (_, row) in enumerate(data.iterrows()):
             cols = st.columns([1, 4])
             with cols[0]:
-                st.image(row["avatar"], width=60)
+                st.markdown(
+                    f"<img src='{row['avatar']}' width='60' style='border-radius: 50%; object-fit: cover;'/>",
+                    unsafe_allow_html=True
+                )
             with cols[1]:
                 name_size = "24px" if rank < 3 else "16px"
                 bg_style = f"background-color:{bg_colors[rank]}; padding:10px; border-radius:10px;" if rank < 3 else ""
