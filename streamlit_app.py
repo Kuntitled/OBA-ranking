@@ -7,7 +7,7 @@ from PIL import Image, ImageDraw, ImageFont
 from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
-st.set_page_config(page_title="Ranking - OBA", page_icon=":shark:")
+st.set_page_config(page_title="Organização de Beyblade do Amazonas", page_icon=":shark:")
 tabOne, tabDuels, tabTwo, tabThree, tabFour, tabFive, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🦈 Regras Especiais", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
