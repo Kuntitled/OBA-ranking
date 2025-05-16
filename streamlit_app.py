@@ -215,6 +215,15 @@ with tabFour: # ABA REGRAS
      ◦ Ex: <em>Roar Tyranno</em> ≠ <em>Soar Phoenix</em>.  
     • Variações de tipo com o mesmo nome (ex: <em>Lightning L-Drago</em> tipo “upper” e tipo “rapid-hit”) são consideradas a <strong>mesma peça</strong>.  
     • <strong>Não é permitido trocar peças entre os Beys do deck durante uma partida.</strong>
+                
+    ### DeckBox - Informações Adicionais
+    Nas partidas no formato **3-on-3**, é **obrigatório** o uso de um equipamento adequado para o armazenamento dos Beyblades, seguindo as diretrizes abaixo:
+
+    • O armazenamento deve possuir **compartimentos separados** para cada Beyblade.  
+    • A **abertura de cada compartimento** deve ser feita de forma **individual**.  
+    • O material do recipiente deve ser **opaco**, impedindo a visualização do conteúdo interno.  
+    • A **ordem dos combos** deve ser definida **da esquerda para a direita**.  
+    • *É **recomendável** que cada compartimento possua uma **identificação numérica**.*
 
     ---
 
