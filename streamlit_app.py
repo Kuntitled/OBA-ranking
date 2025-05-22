@@ -732,7 +732,7 @@ with tabSix:  # ABA GERADOR BLADER TAG
             id_font     = ImageFont.truetype("fonts/Freshman.ttf", 18)
             name_font   = ImageFont.truetype("fonts/American Captain.ttf", 36)
             points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
-            stats_font  = ImageFont.truetype("fonts/American Captain.ttf", 18)
+            stats_font  = ImageFont.truetype("fonts/American Captain.ttf", 12)
 
             # BLADER ID
             id_text = f"#{blader_id}"
@@ -758,7 +758,7 @@ with tabSix:  # ABA GERADOR BLADER TAG
             wins, losses = int(row.get("wins", 0)), int(row.get("losses", 0))
             ratio = float(row.get("win_loss_ratio", 0))
             stats = [f"Vitorias: {wins}", f"Derrotas: {losses}", f"V/D: {ratio:.2f}"]
-            stats_y = pts_y + (bbox[3]-bbox[1]) + 40
+            stats_y = pts_y + (bbox[3]-bbox[1]) + 30
             for line in stats:
                 bbox = stats_font.getbbox(line)
                 x = (tag_img.width - (bbox[2]-bbox[0])) // 2
@@ -770,9 +770,9 @@ with tabSix:  # ABA GERADOR BLADER TAG
             duel_loss = int(row.get("duel_loss", 0))
             duel_pct = float(row.get("duel_win_loss_percentage", 0)) * 100
             duel_stats = [
-                f"Duelos: Vitórias: {duel_win}",
+                f"Duelos: Vitorias: {duel_win}",
                 f"Duelos: Derrotas: {duel_loss}",
-                f"Duelos: % Vitórias: {duel_pct:.1f}%"
+                f"Duelos: % Vitorias: {duel_pct:.1f}%"
             ]
             for line in duel_stats:
                 bbox = stats_font.getbbox(line)
