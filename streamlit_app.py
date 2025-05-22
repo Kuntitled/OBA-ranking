@@ -732,7 +732,7 @@ with tabSix:  # ABA GERADOR BLADER TAG
             id_font     = ImageFont.truetype("fonts/Freshman.ttf", 18)
             name_font   = ImageFont.truetype("fonts/American Captain.ttf", 36)
             points_font = ImageFont.truetype("fonts/American Captain.ttf", 32)
-            stats_font  = ImageFont.truetype("fonts/American Captain.ttf", 24)
+            stats_font  = ImageFont.truetype("fonts/American Captain.ttf", 18)
 
             # BLADER ID
             id_text = f"#{blader_id}"
