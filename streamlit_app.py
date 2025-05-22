@@ -765,6 +765,21 @@ with tabSix:  # ABA GERADOR BLADER TAG
                 draw.text((x, stats_y), line, font=stats_font, fill="white")
                 stats_y += (bbox[3]-bbox[1]) + 5
 
+            # DUEL STATS
+            duel_win = int(row.get("duel_win", 0))
+            duel_loss = int(row.get("duel_loss", 0))
+            duel_pct = float(row.get("duel_win_loss_percentage", 0)) * 100
+            duel_stats = [
+                f"Duelos: Vitórias: {duel_win}",
+                f"Duelos: Derrotas: {duel_loss}",
+                f"Duelos: % Vitórias: {duel_pct:.1f}%"
+            ]
+            for line in duel_stats:
+                bbox = stats_font.getbbox(line)
+                x = (tag_img.width - (bbox[2]-bbox[0])) // 2
+                draw.text((x, stats_y), line, font=stats_font, fill="white")
+                stats_y += (bbox[3]-bbox[1]) + 5
+
             # UPSCALE
             high_res = tag_img.resize((600, 1000), resample=Image.LANCZOS)
 
