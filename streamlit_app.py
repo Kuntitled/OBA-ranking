@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Organização de Beyblade do Amazonas", page_icon=":shark:")
-tabOne, tabDuels, tabTwo, tabThree, tabFour, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "📋 Ranking Completo", "🗓️ Próximo Evento", "✅ Regras Oficiais", "🐞 Gerar Blader Tag"])
+tabOne, tabDuels, tabTwo, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "✅ Regras Oficiais", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -145,56 +145,6 @@ with tabTwo: # ABA TABELA COMPLETA
     use_container_width=True
 )
 
-with tabThree: # ABA EVENTOS
-    st.title("REGRAS & DETALHES DO PRÓXIMO TORNEIO")
-    st.markdown("---")
-    st.write("Mais informações em breve!")
-    # st.markdown(
-    #     """
-    # 🏆 **Torneio Oficial Beyblade Amazonas** — 1×1 até 4 Pontos
-
-    # 📅 **Data e Horários**  
-    # - **Início:** 14h (tolerância de 30 min)  
-    # - **Local:** Ponta Negra, Manaus  
-
-    # 📋 **Formato & Regras**  
-    # - Confrontos 1×1, vitória aos 4 pontos.  
-    # - Somente peças **originais** de Beyblade; peças “fake” são proibidas.  
-    # - **Wizard Rod** banido. Sem mais outras restrições de peças.  
-    # - ❗ Qualquer infração resulta em **desclassificação imediata**.  
-
-    # 🎖 **Premiação**  
-    # - 🥇 **1º lugar:** Beyblade + medalha  
-    # - 🥈 **2º lugar:** Beyblade + medalha  
-    # - 🥉 **3º lugar:** Medalha  
-
-    # 💰 **Inscrições**  
-    # 1. **1º lote:** R\$ 20 (01/05 ▶ 09/05)  
-    # 2. **2º lote:** R\$ 25 (10/05 ▶ 17/05)  
-    # 3. **3º lote:** R\$ 30 (a partir de 18/05)  
-
-    # ✔️ Após a confirmação do pagamento, você receberá um link para cadastro no **Ranking Oficial**.  
-
-    # 🚨 **Não perca!** Garanta já sua vaga e prepare-se para a batalha! 🚨
-    #         """,
-    #     unsafe_allow_html=True
-    # )
-    # st.markdown("---")
-    # st.write("Pix da inscrição:")
-    # st.write("92 99999-3714")
-    # st.write("Carlos Francisco Bussons do Vale")
-    # st.write("Nubank")
-    # st.write("CLIQUE NO BOTÃO PARA ENTRAR EM CONTATO PARA SE INSCREVER E ENVIAR O COMPROVANTE DO PIX")
-    # if st.button("🟢 WhatsApp"):
-    #     st.write("[Abrir chat](https://wa.me/559299993714?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20torneio%21)")
-
-    st.markdown("---")
-    st.write("Mais informações em breve!")
-    st.write("Nos acompanhe nas redes sociais!")
-
-with tabFour: # ABA REGRAS
-    st.title("REGRAS OFICIAIS NO DISCORD!!")
-    
 with tabSix:  # ABA GERADOR BLADER TAG
     st.subheader("🎖️ Gerador de Blader Tag")
 
