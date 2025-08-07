@@ -25,6 +25,9 @@ with tabOne:
     st.write("Última atualização em: " + today)
     st.title("RANKING ATUAL")
 
+    # Sort by points, then wins
+    df = df.sort_values(by=["points", "wins"], ascending=[False, False]).reset_index(drop=True)
+
     # RANKING - TOP 3
     sizes = ["32px", "24px", "18px"]
     medals = ["🥇", "🥈", "🥉"]
@@ -32,21 +35,26 @@ with tabOne:
     st.subheader("🏆 Top 3 Bladers")
 
     for i in range(3):
-        row = top3.iloc[i]
+        row = df.iloc[i]
         name = row["blader"]
         points = int(row["points"])
+        wins = int(row.get("wins", 0))
+        losses = int(row.get("losses", 0))
+        total = wins + losses
+        win_rate = (wins / total * 100) if total > 0 else 0
         image_url = row["avatar"]
-        id_top10 = int(row["blader_id"])
-        id_str_top10 = str(id_top10).zfill(3)
-         
+        id_str = str(int(row["blader_id"])).zfill(3)
 
         st.markdown(
             f"""
             <div style="display: flex; align-items: center; margin-bottom: 15px;">
                 <img src="{image_url}" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
                 <div>
-                    <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} #{id_str_top10} {name}</div>
+                    <div style="font-size: {sizes[i]}; font-weight: bold;">{medals[i]} #{id_str} {name}</div>
                     <div style="font-size: 14px; color: gray;">{points} pontos</div>
+                    <div style="font-size: 13px; color: gray;">
+                        Vitórias: {wins} | Derrotas: {losses} | Taxa de Vitória: {win_rate:.1f}%
+                    </div>
                 </div>
             </div>
             <hr>
@@ -56,12 +64,18 @@ with tabOne:
 
     # OTHER PLACEMENTS
     st.subheader("🏅 Demais Colocados:")
-    #rest = df.iloc[3:].reset_index(drop=True)
     rest = df.iloc[3:10].reset_index(drop=True)
 
     for i, row in rest.iterrows():
+        id_str = str(int(row['blader_id'])).zfill(3)
+        wins = int(row.get("wins", 0))
+        losses = int(row.get("losses", 0))
+        total = wins + losses
+        win_rate = (wins / total * 100) if total > 0 else 0
+
         st.markdown(
-            f"**#{i + 4}** — #{str(int(row['blader_id'])).zfill(3)} {row['blader']} ({int(row['points'])} pontos)"
+            f"""**#{i + 4}** — #{id_str} {row['blader']} ({int(row['points'])} pontos)  
+            🟢 Vitórias: {wins} | 🔴 Derrotas: {losses} | 🎯 Taxa: {win_rate:.1f}%"""
         )
 
     # DIVIDER
@@ -78,6 +92,7 @@ with tabOne:
         """,
         unsafe_allow_html=True
     )
+
 
 with tabDuels:
     min_duels = 5
