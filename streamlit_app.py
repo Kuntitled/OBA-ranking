@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Organização de Beyblade do Amazonas", page_icon=":shark:")
-tabOne, tabDuels, tabTwo, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "✅ Regras Oficiais", "🐞 Gerar Blader Tag"])
+tabOne, tabDuels, tabTwo, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "✅ Ranking Completo", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
