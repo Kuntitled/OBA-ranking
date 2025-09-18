@@ -25,8 +25,23 @@ with tabOne:
     st.write("Última atualização em: " + today)
     st.title("RANKING ATUAL")
 
-    # Sort by points, then wins
-    df = df.sort_values(by=["points", "wins"], ascending=[False, False]).reset_index(drop=True)
+    # Ensure numeric values (avoid weird sort issues)
+    df["points"] = pd.to_numeric(df["points"], errors="coerce").fillna(0)
+    df["wins"] = pd.to_numeric(df["wins"], errors="coerce").fillna(0)
+    df["losses"] = pd.to_numeric(df["losses"], errors="coerce").fillna(0)
+
+    # Calculate win rate
+    df["win_rate"] = df.apply(
+        lambda r: (r["wins"] / (r["wins"] + r["losses"]) * 100)
+        if (r["wins"] + r["losses"]) > 0 else 0,
+        axis=1
+    )
+
+    # Sort: points → wins → win_rate → fewer losses
+    df = df.sort_values(
+        by=["points", "wins", "win_rate", "losses"],
+        ascending=[False, False, False, True]
+    ).reset_index(drop=True)
 
     # RANKING - TOP 3
     sizes = ["32px", "24px", "18px"]
@@ -40,8 +55,7 @@ with tabOne:
         points = int(row["points"])
         wins = int(row.get("wins", 0))
         losses = int(row.get("losses", 0))
-        total = wins + losses
-        win_rate = (wins / total * 100) if total > 0 else 0
+        win_rate = row["win_rate"]
         image_url = row["avatar"]
         id_str = str(int(row["blader_id"])).zfill(3)
 
@@ -70,8 +84,7 @@ with tabOne:
         id_str = str(int(row['blader_id'])).zfill(3)
         wins = int(row.get("wins", 0))
         losses = int(row.get("losses", 0))
-        total = wins + losses
-        win_rate = (wins / total * 100) if total > 0 else 0
+        win_rate = row["win_rate"]
 
         st.markdown(
             f"""**#{i + 4}** — #{id_str} {row['blader']} ({int(row['points'])} pontos)  
