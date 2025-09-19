@@ -25,7 +25,7 @@ with tabOne:
     st.write("Última atualização em: " + today)
     st.title("RANKING ATUAL")
 
-    # Ensure numeric values (avoid weird sort issues)
+    # Ensure numeric values
     df["points"] = pd.to_numeric(df["points"], errors="coerce").fillna(0)
     df["wins"] = pd.to_numeric(df["wins"], errors="coerce").fillna(0)
     df["losses"] = pd.to_numeric(df["losses"], errors="coerce").fillna(0)
@@ -76,9 +76,9 @@ with tabOne:
             unsafe_allow_html=True
         )
 
-    # OTHER PLACEMENTS
+    # OTHER PLACEMENTS (Top 4–16)
     st.subheader("🏅 Demais Colocados:")
-    rest = df.iloc[3:10].reset_index(drop=True)
+    rest = df.iloc[3:16].reset_index(drop=True)  # 🔥 now showing places 4 to 16
 
     for i, row in rest.iterrows():
         id_str = str(int(row['blader_id'])).zfill(3)
