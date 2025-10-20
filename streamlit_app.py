@@ -8,7 +8,7 @@ from streamlit_gsheets import GSheetsConnection
 
 # PAGE CONFIG
 st.set_page_config(page_title="Organização de Beyblade do Amazonas", page_icon=":shark:")
-tabOne, tabDuels, tabTwo, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas", "✅ Ranking Completo", "🐞 Gerar Blader Tag"])
+tabOne, tabDuels, tabRegras, tabTwo, tabSix = st.tabs(["🏆 Top 10", "🏅 Top 10 Duelistas","🧩 Regras", "✅ Ranking Completo", "🐞 Gerar Blader Tag"])
 
 # GSHEETS CONFIG
 gSheetsConnection = st.connection("gsheets", type=GSheetsConnection)
@@ -147,6 +147,254 @@ with tabDuels:
 
     render_leaderboard("🏆 Top 10 por Porcentagem de Vitórias em Duelos", top_win_rate, "duel_win_loss_percentage", percentage=True)
     render_leaderboard("🔥 Top 10 por Número de Vitórias em Duelos", top_duel_wins, "duel_win")
+
+with tabRegras:
+    st.markdown("""
+# 🌀 Regras Oficiais OBA
+
+---
+
+## 🧩 Componentes de Jogo
+
+### 🌪️ Beyblade (Bey)
+- O Bey (ou Beyblade) é o pião utilizado nas batalhas.  
+- Cada Blader deve possuir pelo menos um Bey completo para participar de uma batalha.  
+- Um Bey completo é composto por: **Blade**, **Ratchet** e **Bit**.  
+- No sistema CX, o Blade deve conter as três partes obrigatórias:  
+  - 🔒 Lock Chip  
+  - ⚔️ Lâmina Principal (Main Blade)  
+  - 🛡️ Lâmina Auxiliar (Assist Blade)
+
+---
+
+### 📦 Deck
+- Um deck é um conjunto de **3 Beys**, exigido em certos formatos de partida.  
+- Cada deck pode conter apenas **uma cópia de cada peça**, com exceção dos **Lock Chips**, que podem ser repetidos (Lock Chips com metal são limitados a uma unidade por deck).  
+- O deck poderá conter um **4º combo reserva** para trocas apenas entre batalhas.  
+- Peças com o mesmo nome são consideradas iguais, mesmo com variações regionais.  
+  - Ex: *Phoenix Wing* e *Soar Phoenix* são tratadas como a mesma peça.  
+- Peças com design diferente e nomes distintos são consideradas únicas.  
+  - Ex: *Roar Tyranno ≠ Soar Phoenix*  
+- Variações de tipo com o mesmo nome (ex: Lightning L-Drago tipo “upper” e tipo “rapid-hit”) são consideradas a mesma peça.  
+- ❌ Não é permitido trocar peças entre os Beys do deck durante uma partida.
+
+---
+
+### 📦 DeckBox — Informações Adicionais
+- Obrigatória em partidas no formato **3-on-3**.  
+- Deve possuir **compartimentos separados** para cada Beyblade.  
+- A abertura de cada compartimento deve ser **individual**.  
+- O material deve ser **opaco**, impedindo visualização do conteúdo.  
+- A ordem dos combos deve ser definida **da esquerda para a direita**.  
+- Recomenda-se adicionar **identificação numérica** em cada compartimento.
+
+---
+
+### 🚀 Lançador
+- O lançador é o dispositivo utilizado para lançar o Bey na arena.  
+- Qualquer acessório conectado ao lançador é considerado parte oficial dele e segue as mesmas regras.
+
+---
+
+### 🏟️ Estádio — Regras Oficiais OBA
+- As batalhas acontecem dentro do estádio, composto por duas partes principais:  
+  - **Tampa do Estádio**: área de lançamento (abertura circular).  
+  - **Corpo do Estádio**: superfície onde os Beys batalham.
+
+#### ⚔️ Zonas do Estádio
+- O espaço interno é dividido em **três zonas** que influenciam a batalha:
+
+🔵 **Zona de Batalha (Battle Zone)**  
+- Área principal onde os Beys giram e se enfrentam.  
+
+🕳️ **Zona Over (Over Zone)**  
+- Dois bolsões localizados nas laterais frontais do estádio.  
+- Um Bey que cai aqui pode ser considerado fora de jogo.  
+
+🚨 **Zona Xtreme (Xtreme Zone)**  
+- A grande abertura frontal central do estádio.  
+- Beys que saem por aqui normalmente resultam em **pontos de vitória** para o oponente.
+
+🔎 Um Bey é considerado dentro de uma zona assim que a **maior parte de sua estrutura** estiver dentro da respectiva área.
+
+> **Obs:** Se um Bey sair por um local que **não seja Over ou Xtreme Zone**, o round é **anulado e repetido**.
+
+---
+
+## 🧩 Fases da Partida
+
+### 🕐 Preliminares
+- Cada participante deve preparar seus combos antecipadamente.  
+- No formato 3-on-3, a ordem deve ser definida antes da batalha na presença do juiz.
+
+### 🏁 Início da Partida
+- A partida começa quando ambos os Bladers e o juiz estão presentes.  
+- ❌ Não é permitido receber ajuda de terceiros.  
+- ❌ Não é permitido sair do estádio sem autorização.  
+- ❌ Não é permitido tocar no Beyblade sem autorização do juiz.
+
+---
+
+### 🌀 Posição de Lançamento
+- Antes do primeiro set: sorteio define o lado (ex: cara ou coroa).  
+- Nos sets seguintes: quem perdeu o anterior escolhe o lado.  
+
+---
+
+### 📣 Apresentação do Bey
+- O juiz entrega os Beys e anuncia as combinações.  
+- Após isso, os bladers podem:  
+  - Girar o Ratchet ou Bit.  
+  - Mudar modos de peças que permitem isso.  
+- Devem **avisar o juiz e o oponente** antes de ajustar.  
+- É **proibido tocar no Bey do oponente**.
+
+---
+
+### ⚔️ Batalha
+- A batalha ocorre até que um Blader atinja a pontuação necessária.  
+- No formato 3-on-3, o juiz apresenta os próximos combos na sequência definida.
+
+---
+
+### 🎮 Tipos de Partida
+🔹 **1 contra 1 (1on1)**  
+- Cada Blader seleciona um único Bey.  
+
+🔸 **3 contra 3 (3on3)**  
+- Cada Blader monta um deck com 3 Beys ordenados.  
+- Pode possuir **um combo extra** para alternar entre batalhas.
+
+---
+
+### 🌀 Regras do Deck
+- Após cada batalha, o juiz entrega o próximo Bey conforme a ordem.  
+- Após o 3º Bey, se não houver vencedor:  
+  - Os Bladers podem **reordenar o deck** antes da próxima rodada.  
+- O deck deve permanecer **oculto** e **na mesma ordem** até o final da rodada.
+
+---
+
+## ⚔️ Regras da Batalha
+
+### 🚀 Lançamento
+- Verifique se o Bey está montado corretamente.  
+- Lance seu Bey **a no máximo 20cm** do corpo do estádio.  
+- Não obstrua o lançamento do oponente.  
+- Não toque ou mova o estádio.  
+- Após o lançamento, recue e observe.  
+
+---
+
+### ❌ Erros de Lançamento
+Um erro ocorre quando o Blader:
+- Puxa antes/depois do comando “shoot/rip”.  
+- Lança de mais de 20cm.  
+- Lança de fora da área designada.  
+- Lança o Bey de cabeça para baixo ou de lado.  
+- O Bey toca o estádio antes da área de lançamento.  
+
+**Penalidade:**  
+- A cada 2 erros, o oponente ganha **1 ponto**.  
+- Se ambos errarem, nenhum ponto é dado.
+
+---
+
+### ⚔️ Início e Fim da Batalha
+- Começa quando ambos os Beys tocam o chão.  
+- Um Bey está fora de jogo quando:
+  - Para de girar 🌀  
+  - Se desmonta 💥  
+  - Sai do estádio 🚫  
+
+❗ Não toque no estádio até o juiz confirmar o resultado.
+
+---
+
+### 🏆 Pontuação por Finalizações
+| Tipo de Finalização | Pontos | Condição |
+|----------------------|--------|-----------|
+| Xtreme Finish | **3 pts** | O Bey oponente entra na Xtreme Zone |
+| Over Finish | **2 pts** | O Bey oponente entra na Over Zone |
+| Burst Finish | **2 pts** | Oponente eclode |
+| Spin Finish | **1 pt** | Oponente para de girar |
+
+---
+
+### 🔄 Batalhas Anuladas e Repetidas
+- Empate 🤝  
+- Erro de lançamento  
+- Interferência  
+- Quebra de peças  
+- Obstrução  
+
+Na repetição:
+- Mesmo Beys e lançadores (exceto em caso de quebra).  
+- Bits podem ser girados e peças reapertadas.
+
+---
+
+## ⚖️ Decisões do Juiz
+- Dúvidas devem ser reportadas imediatamente.  
+- Após o início da próxima batalha, resultados não mudam.  
+- A decisão final é sempre do(s) juiz(es).  
+- Recusar a decisão pode resultar em **desclassificação**.
+
+---
+
+## ⚙️ Regulamento de Equipamentos
+
+### 🧱 Regras Gerais
+- Apenas produtos oficiais **Takara Tomy** e **Hasbro**.  
+- Gerações anteriores não são permitidas.  
+- Estádios permitidos:
+  - **Xtreme Stadium (Takara Tomy)**  
+  - **Xtreme BeyStadium (Hasbro)**  
+- Equipamentos trincados ou quebrados ❌  
+- Reparos permitidos apenas se:
+  - Fita por baixo.  
+  - Superfície lisa.  
+  - Sem reforço estrutural.
+
+---
+
+### 🌀 Regulamento de Beys
+- Desgaste extremo é proibido.  
+- Borracha pode desgastar, desde que funcional.  
+- Peças com defeito de fabricação que afetam desempenho são proibidas.
+
+---
+
+### 🚀 Regulamento de Lançadores
+- Winder Launchers aceitam qualquer tipo de winder (Winder, Long, Entry, Dragon).  
+- ❌ Winders não podem ser modificados.  
+- Pode decorar com tinta/adesivo, desde que discreto e sem alterar desempenho.  
+- Imagens ofensivas são proibidas.
+
+---
+
+### 🧩 Acessórios
+- Permitidos se **não atrapalharem o oponente** ou **alterarem desempenho**.
+
+---
+
+### 🚫 Peças Banidas
+*(Lista será publicada separadamente conforme atualizações oficiais.)*
+
+---
+
+## ⚠️ Desclassificação
+Você pode ser desclassificado se:
+- Quebrar regras intencionalmente.  
+- Usar equipamento irregular.  
+- Lançar de forma perigosa.  
+- Agir de forma desrespeitosa.  
+
+**Consequências:**
+- Perda do confronto e colocação.  
+- Possível suspensão de eventos futuros.  
+""")
+
 
 with tabTwo: # ABA TABELA COMPLETA
     df["blader_id"] = df["blader_id"].astype(int).astype(str).str.zfill(3)
